@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111113">
+  <meta name="description" content="보고 읽은 작품을 별점과 짧은 감상으로 기록하는 나만의 컬렉션.">
+  <title>작품창고. — 나의 취향이 쌓이는 곳</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="db.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.7" cy="10.7" r="6.7"/><path d="m16 16 4 4"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M5 16v5h14v-5"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-2H4zm16 0h-4a3 3 0 0 0-3 3v14a4 4 0 0 1 4-2h3z"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15z"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./index.html" aria-label="작품창고 홈">
+        <span class="brand-mark"><svg class="icon"><use href="#i-book"/></svg></span>
+        <span>작품창고<span class="brand-dot">.</span></span>
+      </a>
+      <span class="header-caption">나의 취향이 쌓이는 곳</span>
+      <div class="header-actions">
+        <button type="button" class="button button-primary" id="add-button"><svg class="icon"><use href="#i-plus"/></svg><span>작품 추가</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="collection-intro" aria-labelledby="page-title">
+      <p class="eyebrow">나의 감상 목록</p>
+      <h1 id="page-title">취향을 모으고,<br class="mobile-break"> 작품을 기억하다.</h1>
+      <p class="intro-description">보고 읽은 이야기들, 나만의 별점과 짧은 기록.</p>
+    </section>
+
+    <section class="collection" aria-label="작품 목록">
+      <div class="status-bar">
+        <div class="status-tabs" role="group" aria-label="감상 상태">
+          <button type="button" class="status-tab active" data-status="all" aria-pressed="true">전체 <span id="count-all">0</span></button>
+          <button type="button" class="status-tab" data-status="watching" aria-pressed="false">감상 중 <span id="count-watching">0</span></button>
+          <button type="button" class="status-tab" data-status="completed" aria-pressed="false">감상 완료 <span id="count-completed">0</span></button>
+        </div>
+        <span class="personal-label"><span class="small-dot"></span> 나만의 기록</span>
+      </div>
+
+      <div class="toolbar">
+        <div class="collection-heading"><h2>작품 <span id="result-count">0</span></h2></div>
+        <div class="filters">
+          <label class="search-field">
+            <svg class="icon"><use href="#i-search"/></svg>
+            <input id="search-input" type="search" placeholder="작품 검색" aria-label="작품 제목 검색" autocomplete="off">
+          </label>
+          <label class="select-field">
+            <span class="sr-only">작품 유형</span>
+            <select id="type-filter">
+              <option value="all">모든 유형</option>
+            </select>
+            <svg class="icon"><use href="#i-chevron"/></svg>
+          </label>
+          <label class="select-field sort-field">
+            <span class="sr-only">나열 방법</span>
+            <select id="sort-select"><option value="name" selected>가나다 순</option><option value="rating-high">별점 높은 순</option><option value="rating-low">별점 낮은 순</option><option value="recent">최근에 넣은 순</option><option value="watched">최근에 본 순</option><option value="life-work-only">인생작만 표시</option></select>
+            <svg class="icon"><use href="#i-chevron"/></svg>
+          </label>
+        </div>
+      </div>
+
+      <div class="work-grid" id="work-grid"></div>
+      <div class="empty-state" id="empty-state" hidden>
+        <span class="empty-icon"><svg class="icon"><use href="#i-book"/></svg></span>
+        <h3 id="empty-title">아직 기록한 작품이 없어요</h3>
+        <p id="empty-description">좋아하는 이야기부터 하나씩 모아보세요.</p>
+        <button type="button" class="button button-secondary" id="empty-action">첫 작품 추가하기</button>
+      </div>
+      <div class="load-sentinel" id="load-sentinel">
+        <button class="load-more" id="load-more" type="button">작품 더 보기 <span>↓</span></button>
+      </div>
+      <p class="list-end" id="list-end" hidden>취향이 차곡차곡, 모두 <span id="loaded-count">0</span>개의 이야기</p>
+      <p class="sr-only" id="list-announcement" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="code-result" id="code-result" aria-labelledby="code-result-title" hidden>
+      <div class="code-result-heading"><div><p class="eyebrow">DB.JS UPDATE</p><h2 id="code-result-title">작품 코드</h2></div><button type="button" class="button button-secondary" id="copy-code">코드 복사</button></div>
+      <p id="code-result-description"></p>
+      <pre><code id="generated-code"></code></pre>
+      <p class="code-result-note">복사한 코드를 <code>db.js</code>의 <code>INITIAL_WORKS</code>에 반영한 뒤 페이지를 새로고침하세요.</p>
+    </section>
+
+    <footer class="site-footer">
+      <span class="footer-brand">작품창고<span>.</span></span>
+      <p>나의 취향이 쌓이는 곳</p>
+    </footer>
+  </main>
+
+  <dialog class="work-dialog" id="work-dialog" aria-labelledby="dialog-title">
+    <form id="work-form">
+      <div class="dialog-heading"><div><p class="eyebrow">A NEW CHAPTER</p><h2 id="dialog-title">새로운 작품 기록</h2></div><button class="icon-button" id="close-dialog" type="button" aria-label="창 닫기"><svg class="icon"><use href="#i-close"/></svg></button></div>
+      <div class="dialog-body">
+        <input type="hidden" id="work-id">
+        <label class="form-field"><span>작품 이름 <b>*</b></span><input id="work-title" required maxlength="120" placeholder="어떤 이야기를 만났나요?"></label>
+        <div class="poster-input-row">
+          <img id="poster-preview" src="img/default.svg" alt="포스터 미리보기" width="80" height="120">
+          <label class="form-field"><span>포스터 파일 이름</span><input id="work-image" maxlength="180" placeholder="예: my-poster.jpg" aria-describedby="image-help"><small id="image-help">img 폴더에 넣은 이미지의 파일명만 입력하세요.<br>비워두면 기본 포스터가 표시됩니다.</small></label>
+        </div>
+        <div class="life-work-row">
+          <label class="life-work-toggle"><input id="work-life-work" type="checkbox"><span>인생작으로 표시</span></label>
+        </div>
+        <fieldset class="type-fieldset"><legend>작품 유형 <b>*</b> <small>여러 개 선택 가능</small></legend><div class="type-options"></div></fieldset>
+        <div class="form-row">
+          <label class="form-field"><span>감상 상태</span><select id="work-status"><option value="completed">감상 완료</option><option value="watching">감상 중</option></select></label>
+          <label class="form-field"><span>본 날짜 <small>선택</small></span><input id="work-date" type="date" min="0001-01-01" max="9999-12-31"></label>
+        </div>
+        <div class="rating-field"><div class="rating-heading"><label for="work-rating">나의 별점</label><output id="rating-output" for="work-rating">5.0</output></div><div class="rating-control"><span class="rating-stars" id="form-stars" style="--rating:100%" aria-hidden="true"><span>★★★★★</span><span class="stars-fill">★★★★★</span></span><input type="range" id="work-rating" min="1" max="5" step="0.5" value="5" aria-valuetext="5점"></div><div class="range-captions"><span>1점</span><span>0.5점 단위</span><span>5점</span></div></div>
+        <label class="form-field"><span>한 줄 평 <small>선택</small></span><textarea id="work-review" rows="2" maxlength="180" placeholder="이 작품이 남긴 장면을 짧게 적어보세요."></textarea><small class="character-count"><span id="review-length">0</span> / 180</small></label>
+        <label class="form-field"><span>긴 감상 <small>선택 · 상세 정보에서만 표시</small></span><textarea id="work-long-review" rows="7" maxlength="10000" placeholder="작품에 대한 감상을 자유롭게 기록해 보세요."></textarea></label>
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+      </div>
+      <div class="dialog-footer"><button type="button" class="delete-button" id="delete-button" hidden>삭제 코드 만들기</button><div class="dialog-footer-right"><button type="button" class="button button-secondary" id="cancel-dialog">취소</button><button type="submit" class="button button-primary">JS 코드 만들기</button></div></div>
+    </form>
+  </dialog>
+  <dialog class="detail-dialog" id="detail-dialog" aria-labelledby="detail-title">
+    <div class="detail-heading"><div><p class="eyebrow">WORK DETAILS</p><h2 id="detail-title"></h2></div><button class="icon-button" id="close-detail" type="button" aria-label="상세 정보 닫기"><svg class="icon"><use href="#i-close"/></svg></button></div>
+    <div class="detail-body">
+      <div class="detail-poster-wrap"><img class="detail-poster" id="detail-poster" src="img/default.svg" alt=""><span class="life-work-badge" id="detail-life-work-badge" aria-label="인생작" hidden>인생작</span></div>
+      <div class="detail-meta"><p id="detail-types"></p><p id="detail-status"></p><p id="detail-date"></p><p class="detail-rating" id="detail-rating"></p><p class="detail-review" id="detail-review"></p></div>
+      <section class="detail-long-review" id="detail-long-section" hidden><h3>긴 감상</h3><p id="detail-long-review"></p></section><button type="button" class="button button-primary detail-edit" id="detail-edit">작품 수정</button>
+    </div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
