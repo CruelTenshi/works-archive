@@ -1,4 +1,4 @@
-/* 작품창고 · No external fonts or dependencies */
+/* 감상 아카이브 · No external fonts or dependencies */
 :root{color-scheme:dark;--bg:#111113;--panel:#19191d;--line:#29292f;--text:#eeeef2;--muted:#92929f;--purple:#9975ff;--purple-strong:#8860f5;--soft:#bca6ff}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}

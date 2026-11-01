@@ -70,15 +70,18 @@
   initializeTypeOptions();
   $("#type-filter").value = state.type;
 
+  const favoriteBadgeContent = '<svg class="badge-emblem" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 7 5 4 4-7 4 7 5-4-2 11H5z"/><path d="M6 21h12M8 15h8"/><path d="M12 11v3"/></svg><span class="badge-label">인생작</span>';
+
   function cardTemplate(work) {
     const title = escapeHTML(work.title);
     const rating = formatRating(work.rating);
-    return `<article class="work-card">
+    return `<article class="work-card${work.status === "watching" ? " is-watching" : ""}${work.lifeWork ? " is-life-work" : ""}">
       <button type="button" class="card-open" data-id="${escapeHTML(work.id)}" aria-label="${title} 상세 정보 보기">
         <div class="poster-wrap">
           <img class="poster" src="${imageURL(work.image)}" alt="${title} 포스터" loading="lazy" decoding="async" width="400" height="600">
-          ${work.status === "watching" ? '<span class="watching-badge" title="감상 중"><span class="small-dot" aria-hidden="true"></span>감상 중</span>' : ""}
-          ${work.lifeWork ? '<span class="life-work-badge life-work-left" aria-label="인생작">인생작</span>' : ""}
+          ${work.lifeWork ? '<span class="favorite-aura" aria-hidden="true"></span>' : ""}
+          ${work.status === "watching" ? '<span class="watching-badge" title="감상 중"><span class="badge-signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="badge-copy"><span class="badge-kicker" aria-hidden="true">NOW WATCHING</span><span class="badge-label">감상 중</span></span></span>' : ""}
+          ${work.lifeWork ? `<span class="life-work-badge life-work-left" aria-label="인생작">${favoriteBadgeContent}</span>` : ""}
         </div>
         <div class="card-types">${work.types.map(escapeHTML).join(' · ')}</div>
         <h3 class="card-title" title="${title}">${title}</h3>
@@ -204,6 +207,8 @@
     const lifeWorkBadge = $("#detail-life-work-badge");
     lifeWorkBadge.hidden = !work.lifeWork;
     lifeWorkBadge.className = "life-work-badge life-work-left";
+    lifeWorkBadge.innerHTML = favoriteBadgeContent;
+    $("#detail-favorite-aura").hidden = !work.lifeWork;
     $("#detail-types").textContent = work.types.join(" · ");
     $("#detail-status").textContent = work.status === "watching" ? "감상 중" : "감상 완료";
     $("#detail-date").textContent = work.watchedAt ? `본 날짜 · ${work.watchedAt}` : "본 날짜 기록 없음";

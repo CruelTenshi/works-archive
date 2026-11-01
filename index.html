@@ -3,15 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111113">
+  <meta name="theme-color" content="#050719">
   <meta name="description" content="보고 읽은 작품을 별점과 짧은 감상으로 기록하는 나만의 컬렉션.">
-  <title>작품창고. — 나의 취향이 쌓이는 곳</title>
+  <title>감상 아카이브 — 나의 취향이 쌓이는 곳</title>
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="cyber.css">
   <script src="db.js" defer></script>
   <script src="app.js" defer></script>
 </head>
-<body>
+<body class="review-site">
   <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
     <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.7" cy="10.7" r="6.7"/><path d="m16 16 4 4"/></symbol>
@@ -24,11 +25,11 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="./index.html" aria-label="작품창고 홈">
-        <span class="brand-mark"><svg class="icon"><use href="#i-book"/></svg></span>
-        <span>작품창고<span class="brand-dot">.</span></span>
+      <a class="brand" href="./index.html" aria-label="감상 아카이브 홈">
+        <span class="brand-mark"><img src="brand.svg" alt="" width="38" height="38" aria-hidden="true"></span>
+        <span>감상 아카이브<span class="brand-dot">.</span></span>
       </a>
-      <span class="header-caption">나의 취향이 쌓이는 곳</span>
+      <span class="header-caption">PERSONAL COLLECTION</span>
       <div class="header-actions">
         <button type="button" class="button button-primary" id="add-button"><svg class="icon"><use href="#i-plus"/></svg><span>작품 추가</span></button>
       </div>
@@ -37,9 +38,13 @@
 
   <main class="page">
     <section class="collection-intro" aria-labelledby="page-title">
-      <p class="eyebrow">나의 감상 목록</p>
-      <h1 id="page-title">취향을 모으고,<br class="mobile-break"> 작품을 기억하다.</h1>
-      <p class="intro-description">보고 읽은 이야기들, 나만의 별점과 짧은 기록.</p>
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="section-code">01 /</span> 나의 감상 아카이브</p>
+        <h1 id="page-title" class="archive-title" aria-label="Review Archive">REVIEW<span>ARCHIVE<i>_</i></span></h1>
+        <p class="intro-description">보고 읽은 모든 것.<br>나의 별점과 감상으로 남기는 작품의 기록.</p>
+        <div class="hero-caption" aria-hidden="true"><span class="hazard-strip"></span><span>KEEP WHAT MOVES YOU.</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><img src="signal.svg" alt="" width="480" height="300"><span class="art-caption">R / ARCHIVE</span></div>
     </section>
 
     <section class="collection" aria-label="작품 목록">
@@ -96,7 +101,7 @@
     </section>
 
     <footer class="site-footer">
-      <span class="footer-brand">작품창고<span>.</span></span>
+      <span class="footer-brand">감상 아카이브<span>.</span></span>
       <p>나의 취향이 쌓이는 곳</p>
     </footer>
   </main>
@@ -130,7 +135,7 @@
   <dialog class="detail-dialog" id="detail-dialog" aria-labelledby="detail-title">
     <div class="detail-heading"><div><p class="eyebrow">WORK DETAILS</p><h2 id="detail-title"></h2></div><button class="icon-button" id="close-detail" type="button" aria-label="상세 정보 닫기"><svg class="icon"><use href="#i-close"/></svg></button></div>
     <div class="detail-body">
-      <div class="detail-poster-wrap"><img class="detail-poster" id="detail-poster" src="img/default.svg" alt=""><span class="life-work-badge" id="detail-life-work-badge" aria-label="인생작" hidden>인생작</span></div>
+      <div class="detail-poster-wrap"><img class="detail-poster" id="detail-poster" src="img/default.svg" alt=""><span class="favorite-aura" id="detail-favorite-aura" aria-hidden="true" hidden></span><span class="life-work-badge" id="detail-life-work-badge" aria-label="인생작" hidden></span></div>
       <div class="detail-meta"><p id="detail-types"></p><p id="detail-status"></p><p id="detail-date"></p><p class="detail-rating" id="detail-rating"></p><p class="detail-review" id="detail-review"></p></div>
       <section class="detail-long-review" id="detail-long-section" hidden><h3>긴 감상</h3><p id="detail-long-review"></p></section><button type="button" class="button button-primary detail-edit" id="detail-edit">작품 수정</button>
     </div>
