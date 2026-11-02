@@ -177,6 +177,7 @@
     $("#work-id").value = work ? work.id : "";
     $("#work-title").value = work ? work.title : "";
     $("#work-image").value = work ? work.image : "";
+    $("#work-namuwiki-url").value = work ? work.namuWikiUrl : "";
     $("#work-date").value = work ? work.watchedAt : "";
     $("#work-status").value = work ? work.status : "completed";
     $("#work-rating").value = work ? work.rating : 5;
@@ -213,6 +214,10 @@
     $("#detail-status").textContent = work.status === "watching" ? "감상 중" : "감상 완료";
     $("#detail-date").textContent = work.watchedAt ? `본 날짜 · ${work.watchedAt}` : "본 날짜 기록 없음";
     $("#detail-rating").textContent = `별점 · ${formatRating(work.rating)} / 5`;
+    const namuWikiLink = $("#detail-namuwiki-link");
+    namuWikiLink.hidden = !work.namuWikiUrl;
+    if (work.namuWikiUrl) namuWikiLink.href = work.namuWikiUrl;
+    else namuWikiLink.removeAttribute("href");
     const review = $("#detail-review");
     review.textContent = work.review || "";
     review.hidden = !work.review;
@@ -309,6 +314,7 @@
         id: $("#work-id").value || undefined,
         title: $("#work-title").value,
         image: $("#work-image").value,
+        namuWikiUrl: $("#work-namuwiki-url").value,
         watchedAt: $("#work-date").value,
         rating: Number($("#work-rating").value),
         review: $("#work-review").value,

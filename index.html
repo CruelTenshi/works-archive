@@ -119,6 +119,7 @@
         <div class="life-work-row">
           <label class="life-work-toggle"><input id="work-life-work" type="checkbox"><span>인생작으로 표시</span></label>
         </div>
+        <label class="form-field"><span>나무위키 링크 <small>선택</small></span><input id="work-namuwiki-url" type="url" placeholder="https://namu.wiki/w/작품명" aria-describedby="namuwiki-help"><small id="namuwiki-help">비워두면 작품 상세 정보에 링크가 표시되지 않습니다.</small></label>
         <fieldset class="type-fieldset"><legend>작품 유형 <b>*</b> <small>여러 개 선택 가능</small></legend><div class="type-options"></div></fieldset>
         <div class="form-row">
           <label class="form-field"><span>감상 상태</span><select id="work-status"><option value="completed">감상 완료</option><option value="watching">감상 중</option></select></label>
@@ -136,7 +137,7 @@
     <div class="detail-heading"><div><p class="eyebrow">WORK DETAILS</p><h2 id="detail-title"></h2></div><button class="icon-button" id="close-detail" type="button" aria-label="상세 정보 닫기"><svg class="icon"><use href="#i-close"/></svg></button></div>
     <div class="detail-body">
       <div class="detail-poster-wrap"><img class="detail-poster" id="detail-poster" src="img/default.svg" alt=""><span class="favorite-aura" id="detail-favorite-aura" aria-hidden="true" hidden></span><span class="life-work-badge" id="detail-life-work-badge" aria-label="인생작" hidden></span></div>
-      <div class="detail-meta"><p id="detail-types"></p><p id="detail-status"></p><p id="detail-date"></p><p class="detail-rating" id="detail-rating"></p><p class="detail-review" id="detail-review"></p></div>
+      <div class="detail-meta"><p id="detail-types"></p><p id="detail-status"></p><p id="detail-date"></p><p class="detail-rating" id="detail-rating"></p><p class="detail-review" id="detail-review"></p><a class="button button-secondary detail-namuwiki-link" id="detail-namuwiki-link" target="_blank" rel="noopener noreferrer" hidden>나무위키 보기 ↗<span class="sr-only"> (새 탭에서 열림)</span></a></div>
       <section class="detail-long-review" id="detail-long-section" hidden><h3>긴 감상</h3><p id="detail-long-review"></p></section><button type="button" class="button button-primary detail-edit" id="detail-edit">작품 수정</button>
     </div>
   </dialog>
