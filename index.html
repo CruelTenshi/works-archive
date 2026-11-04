@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="cyber.css">
   <script src="db.js" defer></script>
   <script src="app.js" defer></script>
-<link rel="stylesheet" href="hologram.css?v=20261103">
+<link rel="stylesheet" href="hologram.css?v=20261104">
 <script src="hologram.js?v=20261103" defer></script>
 </head>
 <body class="review-site">
@@ -49,7 +49,7 @@
       <div class="hero-art" aria-hidden="true"><svg class="holo-scene" viewBox="0 0 500 330" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="holo-glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8affed" stop-opacity=".15"/><stop offset=".55" stop-color="#3d8ecb" stop-opacity=".04"/><stop offset="1" stop-color="#a58aff" stop-opacity=".17"/></linearGradient><radialGradient id="holo-aura"><stop stop-color="#6ce5da" stop-opacity=".13"/><stop offset="1" stop-color="#6ce5da" stop-opacity="0"/></radialGradient></defs><ellipse cx="250" cy="175" rx="190" ry="145" fill="url(#holo-aura)"/><path class="wire faint" d="M24 65V30H65M435 30h41v35M24 255v35h41M435 290h41v-35M250 20v10M250 290v10M14 160h12M474 160h12"/><text class="label" x="30" y="20">PERSONAL / ARCHIVE SYSTEM</text><text class="label" x="410" y="310">EST. 2026</text><g class="holo-orbit"><circle class="wire faint" cx="250" cy="162" r="125"/><circle class="wire holo-trace" cx="250" cy="162" r="114"/><circle class="solid" cx="250" cy="48" r="3"/></g><g class="holo-float-delayed"><path class="glass" d="m147 93 102-22v141l-102 22Z"/><path class="wire faint" d="m162 115 70-15m-70 25 70-15m-70 92 70-15"/></g><g class="holo-float"><path class="glass" d="m224 77 103 22v141l-103-22Z"/><path class="wire" d="m241 100 69 15v75l-69-15Z"/><path class="wire violet" d="m250 157 16-17 13 14 16-20 15 29"/><circle class="wire" cx="260" cy="127" r="6"/><path class="wire faint" d="m241 193 69 15m-69-5 44 10"/></g><ellipse class="wire violet" cx="250" cy="162" rx="163" ry="48" transform="rotate(-25 250 162)"/><path class="wire faint" d="M327 115h52l23-24h50M147 213H98l-18 18H44"/><text class="bright-label" x="378" y="78">COLLECTION</text><text class="label" x="43" y="250">KEEP THE FEELING</text></svg><div class="holo-readout"><span>PERSONAL COLLECTION</span><span>R / 03</span></div></div>
     </section>
 
-    <section class="collection" aria-label="작품 목록">
+    <section class="collection" aria-labelledby="works-title">
       <div class="status-bar">
         <div class="status-tabs" role="group" aria-label="감상 상태">
           <button type="button" class="status-tab active" data-status="all" aria-pressed="true">전체 <span id="count-all">0</span></button>
@@ -60,7 +60,7 @@
       </div>
 
       <div class="toolbar">
-        <div class="collection-heading"><h2>작품 <span id="result-count">0</span></h2></div>
+        <div class="collection-heading"><h2 id="works-title">작품 목록 <span id="result-count">0</span></h2></div>
         <div class="filters">
           <label class="search-field">
             <svg class="icon"><use href="#i-search"/></svg>
