@@ -3,7 +3,6 @@
 body{background-color:var(--bg);background-image:radial-gradient(ellipse at 80% 0%,#1d566c25,transparent 48%),linear-gradient(#76b8c706 1px,transparent 1px),linear-gradient(90deg,#76b8c706 1px,transparent 1px);background-size:auto,64px 64px,64px 64px}
 body:before{height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--violet),transparent)}
 .quiz-site{--cyan:#72deff;--violet:#b29bff;--accent:var(--cyan)}
-.review-site{--cyan:#c3a4ff;--violet:#75e8ee;--accent:var(--cyan)}
 .site-header{height:80px;background:#050c14d9;border-bottom-color:#6bdcda21;backdrop-filter:blur(18px)}
 .header-caption{color:#93acba;font-size:9px;letter-spacing:2px;border-color:#34505f}
 .brand{font-size:21px;letter-spacing:-.8px}.brand-mark img{filter:drop-shadow(0 0 8px #66f7df40)}
@@ -59,7 +58,55 @@ body:before{height:1px;background:linear-gradient(90deg,transparent,var(--cyan),
 .db-picker-head{padding:22px 24px}.db-picker-intro h2{font-size:18px}.db-picker-intro h2:before{color:var(--cyan)}.db-picker-intro p{font-size:12px;color:#9bb3c0}.db-toolbar select{font-size:12px}
 .db-grid{gap:22px;margin-top:24px}.db-card:before{font-size:26px;top:21px;right:22px;color:#5f8c9b}.db-categories{margin-bottom:30px}.db-card h3{font-size:21px;color:#e7f5f6;line-height:1.55}.db-card p{font-size:13px;color:#9fb6c4;margin-top:13px;margin-bottom:24px}.db-card .btn.primary{font-size:12px;border-top-color:#74a4ad30;color:var(--cyan)}
 .db-card:nth-child(3n+2){--cyan:#b5a4ff}.db-card:nth-child(3n+3){--cyan:#80efc4}
-.work-card{border-color:#40637666;padding-bottom:18px;transition:transform .3s}.work-card:hover{transform:translateY(-4px)}.poster-wrap{border-color:#62789870;box-shadow:0 12px 25px #0003}.card-title{font-size:14px;line-height:1.6}.card-review{color:#a4b5c9}.card-types{color:#99adc1}.card-date{color:#8b9eb8}
+/* Review cards use the same glass panels and corner brackets as the archive indexes. */
+.review-site .status-bar{border-color:#35566766;background:#0a162199}
+.review-site .toolbar{padding:16px 18px;border:1px solid #35566766;background:#0a162199}
+.review-site .collection-heading h2{margin:0;font-size:18px;letter-spacing:-.4px}
+.review-site .collection-heading h2:before{color:var(--cyan)}
+.review-site .select-field .icon{top:50%;transform:translateY(-50%)}
+.review-site .work-grid{gap:20px}
+.review-site .work-card{
+  isolation:isolate;padding:0;border:1px solid #3e647269;border-top-color:#72b6bf66;
+  background:radial-gradient(ellipse at 100% 0%,#51d8d80b,transparent 65%),linear-gradient(130deg,#102330ee,#0b1322f5);
+  box-shadow:inset 0 1px #c7fffa06,0 8px 28px #00000018;
+  transition:transform .3s,border-color .3s,box-shadow .3s
+}
+.review-site .work-card:after{
+  content:"";position:absolute;inset:-1px;z-index:4;pointer-events:none;opacity:.7;
+  background:linear-gradient(var(--cyan),var(--cyan)) left top/19px 2px no-repeat,
+    linear-gradient(var(--cyan),var(--cyan)) left top/2px 19px no-repeat,
+    linear-gradient(var(--violet),var(--violet)) right bottom/19px 2px no-repeat,
+    linear-gradient(var(--violet),var(--violet)) right bottom/2px 19px no-repeat
+}
+.review-site .work-card:is(:hover,:focus-within){
+  transform:translateY(-5px);border-color:var(--cyan);
+  background:radial-gradient(ellipse at 100% 0%,#51d8d815,transparent 65%),linear-gradient(130deg,#142e3b,#0d1729);
+  box-shadow:0 14px 36px #0006,0 0 26px #64ddce14,inset 0 0 24px #64ddce05
+}
+.review-site .card-open{padding:10px 10px 14px;height:100%;display:flex;flex-direction:column;align-items:stretch}
+.review-site .poster-wrap{flex:none;clip-path:none;border-color:#62789870;box-shadow:none}
+.review-site .is-life-work .poster-wrap{border-color:#e9c77d80}
+.review-site .is-watching:not(.is-life-work) .poster-wrap{border-color:#66f7df70}
+.review-site .card-edit{top:15px;right:15px}
+.review-site .card-title{font-size:15px;line-height:1.55;color:#e7f5f6}
+.review-site .card-open:is(:hover,:focus-visible) .card-title{color:var(--cyan)}
+.review-site .card-types{color:#b5c9d4;margin:12px 0 6px}
+.review-site .card-rating{padding-top:8px;border-top:1px solid #74a4ad30}
+.review-site .card-review{color:#a2b7c3}
+.review-site :is(.work-dialog,.detail-dialog,.code-result,.empty-state){background:#0b1721;border:1px solid #3b657266;border-top:2px solid var(--cyan)}
+.review-site .dialog-footer{background:#0a1621}
+@media(max-width:650px){
+  .review-site .toolbar{padding:12px}
+  .review-site .work-grid{gap:13px}
+  .review-site .card-open{padding:7px 7px 11px}
+  .review-site .card-title{font-size:13px}
+  .review-site .status-tabs{gap:clamp(8px,4vw,22px)}
+  .review-site .watching-badge{padding:4px 6px;gap:4px}
+  .review-site .badge-kicker{display:none}
+}
+@media(prefers-reduced-motion:reduce){.review-site .work-card:is(:hover,:focus-within){transform:none}}
+html[data-motion="paused"] .review-site .work-card:is(:hover,:focus-within){transform:none}
+
 .panel,.card,.toc-panel{background:#0b1721;border-color:#3b657266;box-shadow:0 12px 35px #0002}.panel{border-top:2px solid var(--cyan)}
 .is-solving .collection-intro{min-height:0;padding-top:30px;padding-bottom:26px;grid-template-columns:1fr}.is-solving .collection-intro:before{display:none}
 .cardhead{background:linear-gradient(90deg,#142d3a,#101c2c);border-color:#3b657266}.option{background:#0b1721;border-color:#375566;color:#d4e4eb}.option:hover:not(:disabled){background:#142d39;border-color:#75bfcb}.option.selected{background:#72deff0b;border-color:var(--cyan);box-shadow:inset 3px 0 var(--cyan)}
