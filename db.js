@@ -2,27 +2,37 @@
  * db.js — 데이터만 관리하는 파일 (UI 코드 없음)
  * ------------------------------------------------------
  * 아래 INITIAL_WORKS만 수정하면 초기 작품 목록을 바꿀 수 있습니다.
- * 데모 작품명/표지/감상은 모두 이 사이트를 위해 만든 가상 예시입니다.
  *
- * title     : 작품 이름 (필수)
- * image     : img 폴더 안 파일 이름. 빈 문자열이면 기본 포스터
+ * title      : 작품 이름 (필수)
+ * image      : img 폴더 안 파일 이름. 빈 문자열이면 기본 포스터
  * namuWikiUrl: 나무위키 문서의 https://namu.wiki/... 주소 (선택, 생략하거나 ""이면 링크 숨김)
- * watchedAt : 본 날짜 "YYYY-MM-DD" 또는 "" (선택)
- * rating    : 1 ~ 5 사이 0.5점 단위 (필수)
- * review    : 한 줄 평 또는 "" (선택, 180자 이하)
- * longReview: 장문 감상 또는 "" (선택, 10,000자 이하)
- * lifeWork  : 인생작 여부 (true / false, 생략하면 false)
- * types     : TYPES에 선언된 유형 중 1개 이상
- * status    : "completed"(감상 완료) / "watching"(감상 중)
- * id        : 중복되지 않는 고유 값
- * createdAt : 추가 시각 ISO 문자열 (최근 넣은 순 정렬에 사용)
+ * watchedAt  : 본 날짜 "YYYY-MM-DD" 또는 "" (선택)
+ * rating     : 1 ~ 5 사이 0.5점 단위 (필수)
+ * review     : 한 줄 평 또는 "" (선택, 180자 이하)
+ * longReview : 장문 감상 또는 "" (선택, 10,000자 이하)
+ * lifeWork   : 인생작 여부 (true / false, 생략하면 false)
+ * types      : TYPES에 선언된 유형 중 1개 이상
+ * status     : "completed"(감상 완료) / "watching"(감상 중)
+ * id         : 중복되지 않는 고유 값
+ * createdAt  : 추가 시각 ISO 문자열 (최근 넣은 순 정렬에 사용)
  *
  * 화면에서 작품을 추가/수정하면 INITIAL_WORKS에 반영할 JS 코드를
  * 만들어 보여줍니다. 코드를 db.js의 INITIAL_WORKS에 직접 반영해 주세요.
  */
 (() => {
   "use strict";
-  const TYPES = Object.freeze(["애니메이션", "문학", "비문학", "영화", "만화", "라이트노벨", "드라마"]);
+
+  const TYPES = Object.freeze([
+    "애니메이션",
+    "문학",
+    "비문학",
+    "영화",
+    "만화",
+    "라이트노벨",
+    "드라마",
+    "게임"
+  ]);
+
   const INITIAL_WORKS = [
     {
       "id": "52178506-862a-4f2b-8a41-f311dc9a47c5",
@@ -33,9 +43,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:01:10.519Z"
     },
@@ -48,10 +56,8 @@
       "rating": 5,
       "review": "잔잔한 여정을 담은 전통 판타지",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T03:04:10.537Z"
     },
@@ -64,9 +70,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:06:58.044Z"
     },
@@ -79,13 +83,11 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:08:57.582Z"
-     },
-     {
+    },
+    {
       "id": "e0bbe869-7e03-427d-9f93-5918d3c552ce",
       "title": "주술회전 2기 : 희옥·옥절",
       "image": "주술회전 2기 희옥 옥절.webp",
@@ -94,9 +96,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:11:03.613Z"
     },
@@ -109,10 +109,8 @@
       "rating": 5,
       "review": "인류와 우리, 선택의 어려움",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T03:15:38.037Z"
     },
@@ -125,10 +123,8 @@
       "rating": 5,
       "review": "치열한 두뇌 싸움, 참신한 전개",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T03:17:48.987Z"
     },
@@ -141,9 +137,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:19:11.156Z"
     },
@@ -156,9 +150,7 @@
       "rating": 5,
       "review": "초반까지 공감하며 보다가 인싸 기만에 당함",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:21:03.096Z"
     },
@@ -171,9 +163,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:26:53.560Z"
     },
@@ -186,9 +176,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:29:10.836Z"
     },
@@ -201,10 +189,8 @@
       "rating": 5,
       "review": "어두운 느와르의 감성",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T03:32:26.168Z"
     },
@@ -217,9 +203,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:34:09.759Z"
     },
@@ -232,10 +216,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션",
-          "영화"
-      ],
+      "types": ["애니메이션", "영화"],
       "status": "completed",
       "createdAt": "2026-10-30T03:36:02.359Z"
     },
@@ -248,9 +229,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:39:12.253Z"
     },
@@ -263,10 +242,8 @@
       "rating": 5,
       "review": "졸업 축하드립니다",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T03:40:38.513Z"
     },
@@ -279,11 +256,8 @@
       "rating": 5,
       "review": "지브릴 나쁜 년",
       "longReview": "",
-      "types": [
-          "애니메이션",
-          "영화"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션", "영화"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T03:41:47.761Z"
     },
@@ -296,9 +270,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:42:53.657Z"
     },
@@ -311,9 +283,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:43:57.339Z"
     },
@@ -326,9 +296,7 @@
       "rating": 5,
       "review": "사랑에는 여러 형태가 있다",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:44:39.572Z"
     },
@@ -341,10 +309,8 @@
       "rating": 5,
       "review": "서스펜스 추리의 정석",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T03:45:41.223Z"
     },
@@ -357,10 +323,8 @@
       "rating": 5,
       "review": "압도적 공포와 충격",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T03:46:59.180Z"
     },
@@ -373,9 +337,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:47:52.827Z"
     },
@@ -388,9 +350,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:48:44.541Z"
     },
@@ -403,10 +363,8 @@
       "rating": 5,
       "review": "불합리함과 억울함의 해소. 그리고 소중함",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T03:49:55.784Z"
     },
@@ -419,10 +377,8 @@
       "rating": 5,
       "review": "영웅의 성장과 희생",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T03:51:03.232Z"
     },
@@ -435,9 +391,7 @@
       "rating": 4,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T03:54:13.030Z"
     },
@@ -450,10 +404,8 @@
       "rating": 5,
       "review": "두뇌형 먼치킨의 정석",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T03:56:12.042Z"
     },
@@ -466,10 +418,8 @@
       "rating": 5,
       "review": "그 누구도 상처 입지 않는 세계의 완성이다",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T03:57:14.427Z"
     },
@@ -482,10 +432,8 @@
       "rating": 5,
       "review": "정의의 복귀, 영웅의 부활",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T03:58:28.814Z"
     },
@@ -498,9 +446,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T04:00:42.578Z"
     },
@@ -513,9 +459,7 @@
       "rating": 5,
       "review": "사이코 마녀의 미친 여행",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T04:01:45.511Z"
     },
@@ -528,9 +472,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T04:02:48.264Z"
     },
@@ -543,9 +485,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T04:04:07.495Z"
     },
@@ -558,11 +498,8 @@
       "rating": 5,
       "review": "사랑과 세뇌, 그리고 자유의지",
       "longReview": "",
-      "types": [
-          "애니메이션",
-          "영화"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션", "영화"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T04:05:39.703Z"
     },
@@ -575,9 +512,7 @@
       "rating": 5,
       "review": "백합에는 감동이 있다",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T04:06:40.318Z"
     },
@@ -590,26 +525,22 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T04:08:34.559Z"
     },
     {
-        "id": "af0f452f-e9bb-44cc-8ed1-252534aed160",
-        "title": "체인소 맨",
-        "image": "체인소 맨.webp",
-        "namuWikiUrl": "https://namu.wiki/w/%EC%B2%B4%EC%9D%B8%EC%86%8C%20%EB%A7%A8(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98)",
-        "watchedAt": "",
-        "rating": 5,
-        "review": "",
-        "longReview": "",
-        "types": [
-            "애니메이션"
-        ],
-        "status": "completed",
-        "createdAt": "2026-10-30T04:11:27.091Z"
+      "id": "af0f452f-e9bb-44cc-8ed1-252534aed160",
+      "title": "체인소 맨",
+      "image": "체인소 맨.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%B2%B4%EC%9D%B8%EC%86%8C%20%EB%A7%A8(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:11:27.091Z"
     },
     {
       "id": "88b91867-91ed-49a9-8df2-c5edc996b553",
@@ -620,9 +551,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T04:12:39.273Z"
     },
@@ -635,1497 +564,1289 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T04:13:45.934Z"
-   },
-   {
-     "id": "7349d524-83b8-4028-86a7-3e981bab9705",
-     "title": "일찍이 마법소녀와 악은 적대하고 있었다.",
-     "image": "일찍이 마법소녀와 악은 적대하고 있었다.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%9D%BC%EC%B0%8D%EC%9D%B4%20%EB%A7%88%EB%B2%95%EC%86%8C%EB%85%80%EC%99%80%20%EC%95%85%EC%9D%80%20%EC%A0%81%EB%8C%80%ED%95%98%EA%B3%A0%20%EC%9E%88%EC%97%88%EB%8B%A4./%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:15:08.945Z"
-   },
-   {
-     "id": "b50d82eb-7833-4eed-949e-1c8918c2ed04",
-     "title": "도망을 잘 치는 도련님",
-     "image": "도망을 잘 치는 도련님.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%8F%84%EB%A7%9D%EC%9D%84%20%EC%9E%98%20%EC%B9%98%EB%8A%94%20%EB%8F%84%EB%A0%A8%EB%8B%98(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:16:34.130Z"
-   },
-   {
-     "id": "f4397dec-ce7c-4908-95df-45cb97e998c9",
-     "title": "바카노!",
-     "image": "바카노!.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%B0%94%EC%B9%B4%EB%85%B8!/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:17:32.557Z"
-   },
-   {
-     "id": "f35c262f-f6c9-4362-9541-0c9fe9192b2a",
-     "title": "빈란드 사가",
-     "image": "빈란드 사가.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%B9%88%EB%9E%80%EB%93%9C%20%EC%82%AC%EA%B0%80(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "바이킹 멋있다",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:18:56.018Z"
-   },
-   {
-     "id": "5ee40178-3618-4233-8d7d-08a54001d857",
-     "title": "리코리스 리코일 Friends are thieves of the time.",
-     "image": "리코리스 리코일 Friends are thieves of the time.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%A6%AC%EC%BD%94%EB%A6%AC%EC%8A%A4%20%EB%A6%AC%EC%BD%94%EC%9D%BC%20Friends%20are%20thieves%20of%20time.",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:20:46.015Z"
-   },
-   {
-       "id": "62c5078d-d27b-4132-8886-cb34a1cd4ee8",
-       "title": "신세기 에반게리온",
-       "image": "신세기 에반게리온.webp",
-       "namuWikiUrl": "https://namu.wiki/w/%EC%8B%A0%EC%84%B8%EA%B8%B0%20%EC%97%90%EB%B0%98%EA%B2%8C%EB%A6%AC%EC%98%A8",
-       "watchedAt": "",
-       "rating": 5,
-       "review": "소년이여 신화가 되어라",
-       "longReview": "",
-       "types": [
-           "애니메이션"
-       ],
-       "lifeWork" : true,
-       "status": "completed",
-       "createdAt": "2026-10-30T04:21:53.875Z"
-   },
-   {
-     "id": "a4273e1b-c11b-449e-a9aa-d145e0c3db37",
-     "title": "엔드 오브 에반게리온",
-     "image": "엔드 오브 에반게리온.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%97%94%EB%93%9C%20%EC%98%A4%EB%B8%8C%20%EC%97%90%EB%B0%98%EA%B2%8C%EB%A6%AC%EC%98%A8",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "각자이기에 아름다운 것들",
-     "longReview": "",
-     "types": [
-         "애니메이션",
-         "영화"
-     ],
-     "lifeWork" : true,
-     "status": "completed",
-     "createdAt": "2026-10-30T04:23:00.709Z"
-   },
-   {
-     "id": "9a3b6bb2-e578-455c-ab9b-7afd0f80181b",
-     "title": "타코피의 원죄",
-     "image": "타코피의 원죄.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%ED%83%80%EC%BD%94%ED%94%BC%EC%9D%98%20%EC%9B%90%EC%A3%84/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:23:59.208Z"
-   },
-   {
-     "id": "86e0a9d2-1082-4209-9d89-b5dcb3948935",
-     "title": "클레바테스 -마수왕과 아기와 시체 용사-",
-     "image": "클레바테스 -마수왕과 아기와 시체 용사-.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%ED%81%B4%EB%A0%88%EB%B0%94%ED%85%8C%EC%8A%A4%20-%EB%A7%88%EC%88%98%EC%99%95%EA%B3%BC%20%EC%95%84%EA%B8%B0%EC%99%80%20%EC%8B%9C%EC%B2%B4%20%EC%9A%A9%EC%82%AC-(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:25:08.570Z"
-   },
-   {
-     "id": "ac3dc008-87d4-4440-9aa1-2562e6f53dc3",
-     "title": "괴수 8호 2기",
-     "image": "괴수 8호 2기.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EA%B4%B4%EC%88%98%208%ED%98%B8(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:26:18.086Z"
-   },
-   {
-     "id": "fb87b7ed-9867-4165-bd0f-028c3f15fccf",
-     "title": "사일런트 위치 침묵의 마녀의 비밀",
-     "image": "사일런트 위치 침묵의 마녀의 비밀.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%82%AC%EC%9D%BC%EB%9F%B0%ED%8A%B8%20%EC%9C%84%EC%B9%98%20%EC%B9%A8%EB%AC%B5%EC%9D%98%20%EB%A7%88%EB%85%80%EC%9D%98%20%EB%B9%84%EB%B0%80/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "공감하면서 볼 수 있음",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:27:20.652Z"
-   },
-   {
-     "id": "550fab15-a1e9-46c6-88da-63a96c99e4e8",
-     "title": "지. -지구의 운동에 대하여-",
-     "image": "지. -지구의 운동에 대하여-.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%A7%80.%20-%EC%A7%80%EA%B5%AC%EC%9D%98%20%EC%9A%B4%EB%8F%99%EC%97%90%20%EB%8C%80%ED%95%98%EC%97%AC-/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "표현의 자유와 성역 없는 탐구",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "lifeWork" : true,
-     "status": "completed",
-     "createdAt": "2026-10-30T04:28:24.102Z"
-   },
-   {
-     "id": "0b0f8691-b013-4f61-a028-57689159f836",
-     "title": "주술회전 3기 : 사멸회유 전편",
-     "image": "주술회전 3기 사멸회유 전편.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%A3%BC%EC%88%A0%ED%9A%8C%EC%A0%84(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%203%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:29:25.993Z"
-   },
-   {
-     "id": "2c9ed009-4b77-4c3c-84b5-db16d5aa5a4b",
-     "title": "최애의 아이 3기",
-     "image": "최애의 아이 3기.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%E3%80%90%EC%B5%9C%EC%95%A0%EC%9D%98%20%EC%95%84%EC%9D%B4%E3%80%91(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%203%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:30:27.540Z"
-   },
-   {
-     "id": "2d0a805a-9fcf-40cc-996a-714f9359dc83",
-     "title": "Re: 제로부터 시작하는 이세계 생활 4기",
-     "image": "Re 제로부터 시작하는 이세계 생활 4기.webp",
-     "namuWikiUrl": "https://namu.wiki/w/Re%3A%20%EC%A0%9C%EB%A1%9C%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%83%9D%ED%99%9C(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%204%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:31:33.892Z"
-   },
-   {
-     "id": "ff002bb1-9d6c-46aa-85a9-258c34246004",
-     "title": "무직전생 ~이세계에 갔으면 최선을 다한다~",
-     "image": "무직전생 ~이세계에 갔으면 최선을 다한다~.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%AC%B4%EC%A7%81%EC%A0%84%EC%83%9D%20~%EC%9D%B4%EC%84%B8%EA%B3%84%EC%97%90%20%EA%B0%94%EC%9C%BC%EB%A9%B4%20%EC%B5%9C%EC%84%A0%EC%9D%84%20%EB%8B%A4%ED%95%9C%EB%8B%A4~(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:33:07.306Z"
-   },
-   {
-     "id": "1bc887a6-46b1-4588-8b5c-059fb7d1ed79",
-     "title": "무직전생 Ⅱ ~이세계에 갔으면 최선을 다한다~",
-     "image": "무직전생 Ⅱ ~이세계에 갔으면 최선을 다한다~.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%AC%B4%EC%A7%81%EC%A0%84%EC%83%9D%20%E2%85%A1%20~%EC%9D%B4%EC%84%B8%EA%B3%84%EC%97%90%20%EA%B0%94%EC%9C%BC%EB%A9%B4%20%EC%B5%9C%EC%84%A0%EC%9D%84%20%EB%8B%A4%ED%95%9C%EB%8B%A4~",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:34:02.042Z"
-   },
-   {
-     "id": "6b0ef630-f218-46b7-ae3d-e5a32a6100a7",
-     "title": "유녀전기 Ⅱ",
-     "image": "유녀전기 Ⅱ.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%9C%A0%EB%85%80%EC%A0%84%EA%B8%B0%20%E2%85%A1",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:35:36.311Z"
-   },
-   {
-       "id": "1621b82b-6285-410c-b621-4ee6839a5d6b",
-       "title": "무직전생 Ⅲ ~이세계에 갔으면 최선을 다한다~",
-       "image": "무직전생 Ⅲ ~이세계에 갔으면 최선을 다한다~.webp",
-       "namuWikiUrl": "https://namu.wiki/w/%EB%AC%B4%EC%A7%81%EC%A0%84%EC%83%9D%20%E2%85%A2%20~%EC%9D%B4%EC%84%B8%EA%B3%84%EC%97%90%20%EA%B0%94%EC%9C%BC%EB%A9%B4%20%EC%B5%9C%EC%84%A0%EC%9D%84%20%EB%8B%A4%ED%95%9C%EB%8B%A4~",
-       "watchedAt": "",
-       "rating": 5,
-       "review": "",
-       "longReview": "",
-       "types": [
-           "애니메이션"
-       ],
-       "status": "watching",
-       "createdAt": "2026-10-30T04:37:10.519Z"
-   },
-  {
-     "id": "6d8cad89-f9c0-4eeb-88f1-de92d88a2c4f",
-     "title": "담배 고양이",
-     "image": "담배 고양이.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%8B%B4%EB%B0%B0%20%EA%B3%A0%EC%96%91%EC%9D%B4/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "망해봤자 재가 될 뿐이야. 대충 살자",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:40:04.664Z"
-   },
-   {
-     "id": "e7cfe6e2-296a-4e33-9a8b-eee6b0a236c9",
-     "title": "마왕인 내가 노예 엘프를 신부로 삼았는데 어떻게 사랑하면 되지?",
-     "image": "마왕인 내가 노예 엘프를 신부로 삼았는데 어떻게 사랑하면 되지.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%A7%88%EC%99%95%EC%9D%B8%20%EB%82%B4%EA%B0%80%20%EB%85%B8%EC%98%88%20%EC%97%98%ED%94%84%EB%A5%BC%20%EC%8B%A0%EB%B6%80%EB%A1%9C%20%EC%82%BC%EC%95%98%EB%8A%94%EB%8D%B0%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%82%AC%EB%9E%91%ED%95%98%EB%A9%B4%20%EB%90%98%EC%A7%80%3F/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:42:31.644Z"
-   },
-   {
-     "id": "a59a2356-8913-49a1-bfa3-aed62c3ed531",
-     "title": "주술회전 2기 : 시부야 사변",
-     "image": "주술회전 2기 시부야 사변.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%A3%BC%EC%88%A0%ED%9A%8C%EC%A0%84(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:45:17.058Z"
-   },
-   {
-     "id": "9ab96ea5-0134-4810-8640-4ee8e7609a89",
-     "title": "오빠는 끝!",
-     "image": "오빠는 끝!.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%EB%B9%A0%EB%8A%94%20%EB%81%9D!/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "나 이런 거 좋아하는구나",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:46:37.871Z"
-   },
-   {
-     "id": "c810f081-d8b0-4af7-ac4d-e164860ba189",
-     "title": "주술회전 0",
-     "image": "주술회전 0.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EA%B7%B9%EC%9E%A5%ED%8C%90%20%EC%A3%BC%EC%88%A0%ED%9A%8C%EC%A0%84%200",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:47:28.671Z"
-   },
-   {
-     "id": "1f0f08d7-8b62-4dba-9f1b-58319e5fa565",
-     "title": "오드 택시",
-     "image": "오드 택시.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%EB%93%9C%20%ED%83%9D%EC%8B%9C",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:49:13.528Z"
-   },
-   {
-     "id": "b0bfa3af-4226-4bd2-9274-e79e5972d4ca",
-     "title": "단간론파 -희망의 학원과 절망의 고교생-",
-     "image": "단간론파 -희망의 학원과 절망의 고교생-.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%8B%A8%EA%B0%84%EB%A1%A0%ED%8C%8C%20-%ED%9D%AC%EB%A7%9D%EC%9D%98%20%ED%95%99%EC%9B%90%EA%B3%BC%20%EC%A0%88%EB%A7%9D%EC%9D%98%20%EA%B3%A0%EA%B5%90%EC%83%9D-%20The%20Animation",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:52:01.733Z"
-   },
-   {
-     "id": "52abe512-679f-4419-b93a-14d7da8f955d",
-     "title": "단간론파 3 -The End of the 키보가미네 학원- 미래편",
-     "image": "단간론파 3 -The End of the 키보가미네 학원- 미래편.jpg",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%8B%A8%EA%B0%84%EB%A1%A0%ED%8C%8C%203%20-The%20End%20of%20%ED%82%A4%EB%B3%B4%EA%B0%80%EB%AF%B8%EB%84%A4%20%ED%95%99%EC%9B%90-",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T04:54:06.122Z"
-   },
-   {
-       "id": "5c713850-2af5-4238-b0c7-ef55fb6f5467",
-       "title": "단간론파 3 -The End of the 키보가미네 학원- 절망편.jpg",
-       "image": "단간론파 3 -The End of the 키보가미네 학원- 절망편.jpg",
-       "namuWikiUrl": "https://namu.wiki/w/%EB%8B%A8%EA%B0%84%EB%A1%A0%ED%8C%8C%203%20-The%20End%20of%20%ED%82%A4%EB%B3%B4%EA%B0%80%EB%AF%B8%EB%84%A4%20%ED%95%99%EC%9B%90-",
-       "watchedAt": "",
-       "rating": 4.5,
-       "review": "",
-       "longReview": "",
-       "types": [
-           "애니메이션"
-       ],
-       "status": "completed",
-       "createdAt": "2026-10-30T04:55:11.965Z"
-   },
-   {
-     "id": "ef8e70a2-4cc9-4e7f-9b76-a38a78c89572",
-     "title": "이세계 콰르텟",
-     "image": "이세계 콰르텟.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%BD%B0%EB%A5%B4%ED%85%9F",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:02:45.656Z"
-   },
-   {
-     "id": "e392b8de-9c48-4ccb-82a1-41a9c0d2e382",
-     "title": "이세계 콰르텟 2",
-     "image": "이세계 콰르텟 2.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%BD%B0%EB%A5%B4%ED%85%9F%202",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:03:55.826Z"
-   },
-   {
-     "id": "dfd1b892-b7e8-46d1-b85a-9500aa4e55a5",
-     "title": "유녀전기",
-     "image": "유녀전기.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%9C%A0%EB%85%80%EC%A0%84%EA%B8%B0(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:05:42.942Z"
-   },
-   {
-       "id": "d3a0cad3-04eb-47a9-9365-2c51e4bc70dd",
-     "title": "카구야 님은 고백받고 싶어? ~천재들의 연애 두뇌전~ 2기",
-     "image": "카구야 님은 고백받고 싶어 ~천재들의 연애 두뇌전~ 2기.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%B9%B4%EA%B5%AC%EC%95%BC%20%EB%8B%98%EC%9D%80%20%EA%B3%A0%EB%B0%B1%EB%B0%9B%EA%B3%A0%20%EC%8B%B6%EC%96%B4%3F%20~%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%98%20%EC%97%B0%EC%95%A0%20%EB%91%90%EB%87%8C%EC%A0%84~",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:06:50.478Z"
-   },
-   {
-     "id": "d6f217e4-ffff-49cf-bb12-5aaa8eb774d9",
-     "title": "카구야 님은 고백받고 싶어? ~천재들의 연애 두뇌전~",
-     "image": "카구야 님은 고백받고 싶어 ~천재들의 연애 두뇌전~.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%B9%B4%EA%B5%AC%EC%95%BC%20%EB%8B%98%EC%9D%80%20%EA%B3%A0%EB%B0%B1%EB%B0%9B%EA%B3%A0%20%EC%8B%B6%EC%96%B4%20~%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%98%20%EC%97%B0%EC%95%A0%20%EB%91%90%EB%87%8C%EC%A0%84~(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:08:24.931Z"
-   },
-   {
-     "id": "5901b814-927b-4e69-9682-535e65e6a84e",
-     "title": "카구야 님은 고백받고 싶어 -울트라 로맨틱-",
-     "image": "카구야 님은 고백받고 싶어 -울트라 로맨틱-.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%B9%B4%EA%B5%AC%EC%95%BC%20%EB%8B%98%EC%9D%80%20%EA%B3%A0%EB%B0%B1%EB%B0%9B%EA%B3%A0%20%EC%8B%B6%EC%96%B4%20-%EC%9A%B8%ED%8A%B8%EB%9D%BC%20%EB%A1%9C%EB%A7%A8%ED%8B%B1-",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:09:11.266Z"
-   },
-   {
-     "id": "95d76d74-dc22-4a9e-adbe-eeb68005d15f",
-     "title": "역경무뢰 카이지",
-     "image": "역경무뢰 카이지.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%97%AD%EA%B2%BD%EB%AC%B4%EB%A2%B0%20%EC%B9%B4%EC%9D%B4%EC%A7%80(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:09:59.574Z"
-   },
-   {
-     "id": "a488aade-6a35-4e5a-b007-ffb784123ec1",
-     "title": "역경무뢰 카이지 파계록편",
-     "image": "역경무뢰 카이지 파계록편.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%97%AD%EA%B2%BD%EB%AC%B4%EB%A2%B0%20%EC%B9%B4%EC%9D%B4%EC%A7%80%20%ED%8C%8C%EA%B3%84%EB%A1%9D%ED%8E%B8",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:11:05.124Z"
-   },
-   {
-     "id": "c8b07ea7-3021-4c46-b5f4-df3417fe6b1a",
-     "title": "암살교실",
-     "image": "암살교실.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%95%94%EC%82%B4%EA%B5%90%EC%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:11:46.270Z"
-   },
-   {
-     "id": "df23e71f-c89a-4e3b-8155-04b1927c9db3",
-     "title": "노 게임 노 라이프",
-     "image": "노 게임 노 라이프.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%85%B8%20%EA%B2%8C%EC%9E%84%20%EB%85%B8%20%EB%9D%BC%EC%9D%B4%ED%94%84(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98)",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:12:34.999Z"
-   },
-   {
-     "id": "aefdaf1a-dffb-451d-949d-c5b6debc5448",
-     "title": "청춘 돼지는 바니걸 선배의 꿈을 꾸지 않는다",
-     "image": "청춘 돼지는 바니걸 선배의 꿈을 꾸지 않는다.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%B2%AD%EC%B6%98%20%EB%8F%BC%EC%A7%80%EB%8A%94%20%EB%B0%94%EB%8B%88%EA%B1%B8%20%EC%84%A0%EB%B0%B0%EC%9D%98%20%EA%BF%88%EC%9D%84%20%EA%BE%B8%EC%A7%80%20%EC%95%8A%EB%8A%94%EB%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98)",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:13:42.664Z"
-   },
-   {
-     "id": "6b0ff321-4423-43f0-8c4f-58993622945f",
-     "title": "청춘 돼지는 꿈꾸는 소녀의 꿈을 꾸지 않는다",
-     "image": "청춘 돼지는 꿈꾸는 소녀의 꿈을 꾸지 않는다.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%B2%AD%EC%B6%98%20%EB%8F%BC%EC%A7%80%EB%8A%94%20%EA%BF%88%EA%BE%B8%EB%8A%94%20%EC%86%8C%EB%85%80%EC%9D%98%20%EA%BF%88%EC%9D%84%20%EA%BE%B8%EC%A7%80%20%EC%95%8A%EB%8A%94%EB%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98)",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션",
-         "영화"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:14:34.903Z"
-   },
-   {
-     "id": "94176754-db37-4d40-9d16-b53b6191b3fa",
-     "title": "청춘 돼지는 외출하는 여동생의 꿈을 꾸지 않는다",
-     "image": "청춘 돼지는 외출하는 여동생의 꿈을 꾸지 않는다.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%B2%AD%EC%B6%98%20%EB%8F%BC%EC%A7%80%EB%8A%94%20%EC%99%B8%EC%B6%9C%ED%95%98%EB%8A%94%20%EC%97%AC%EB%8F%99%EC%83%9D%EC%9D%98%20%EA%BF%88%EC%9D%84%20%EA%BE%B8%EC%A7%80%20%EC%95%8A%EB%8A%94%EB%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98)",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션",
-         "영화"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:16:03.620Z"
-   },
-   {
-     "id": "c54c77ad-f4d3-491d-a6da-088137c598a9",
-     "title": "청춘 돼지는 책가방 소녀의 꿈을 꾸지 않는다",
-     "image": "청춘 돼지는 책가방 소녀의 꿈을 꾸지 않는다.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%B2%AD%EC%B6%98%20%EB%8F%BC%EC%A7%80%EB%8A%94%20%EC%B1%85%EA%B0%80%EB%B0%A9%20%EC%86%8C%EB%85%80%EC%9D%98%20%EA%BF%88%EC%9D%84%20%EA%BE%B8%EC%A7%80%20%EC%95%8A%EB%8A%94%EB%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98)",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션",
-         "영화"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:17:12.921Z"
-   },
-   {
-     "id": "f502cdd1-5c1f-4b77-a173-17bbb1f9dc1a",
-     "title": "진격의 거인 2기",
-     "image": "진격의 거인 2기.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%A7%84%EA%B2%A9%EC%9D%98%20%EA%B1%B0%EC%9D%B8(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:18:22.800Z"
-   },
-   {
-     "id": "731ecfd6-4d07-4ddb-87b4-7d5f63ae793c",
-     "title": "진격의 거인 3기",
-     "image": "진격의 거인 3기.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%A7%84%EA%B2%A9%EC%9D%98%20%EA%B1%B0%EC%9D%B8(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%203%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:19:20.298Z"
-   },
-   {
-     "id": "c280584b-db9c-4eb8-a63e-481054a3597a",
-     "title": "종말의 세라프",
-     "image": "종말의 세라프.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%A2%85%EB%A7%90%EC%9D%98%20%EC%84%B8%EB%9D%BC%ED%94%84/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:20:11.552Z"
-   },
-   {
-     "id": "c666e375-0633-4e84-99dd-5a6eea644f32",
-     "title": "마계학교 이루마 군",
-     "image": "마계학교 이루마 군.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%A7%88%EA%B3%84%ED%95%99%EA%B5%90%20%EC%9D%B4%EB%A3%A8%EB%A7%88%EA%B5%B0(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:21:02.729Z"
-   },
-   {
-     "id": "5a9b2451-4321-4084-9eef-2d28a53b8e69",
-     "title": "극장판 소드 아트 온라인 -프로그레시브- 별 없는 밤의 아리아",
-     "image": "극장판 소드 아트 온라인 -프로그레시브- 별 없는 밤의 아리아.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EA%B7%B9%EC%9E%A5%ED%8C%90%20%EC%86%8C%EB%93%9C%20%EC%95%84%ED%8A%B8%20%EC%98%A8%EB%9D%BC%EC%9D%B8%20-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%A0%88%EC%8B%9C%EB%B8%8C-%20%EB%B3%84%20%EC%97%86%EB%8A%94%20%EB%B0%A4%EC%9D%98%20%EC%95%84%EB%A6%AC%EC%95%84",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션",
-         "영화"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:22:31.797Z"
-   },
-   {
-     "id": "fcf9ff58-efe4-4ba8-a795-198a51a8d59b",
-     "title": "던전 관리인",
-     "image": "던전 관리인.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%8D%98%EC%A0%84%20%EA%B4%80%EB%A6%AC%EC%9D%B8/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:23:06.336Z"
-   },
-   {
-     "id": "8c2ec3e4-a426-4a99-bf36-488bcbf9dc3e",
-     "title": "최애의 아이 2기",
-     "image": "최애의 아이 2기.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%E3%80%90%EC%B5%9C%EC%95%A0%EC%9D%98%20%EC%95%84%EC%9D%B4%E3%80%91(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:23:43.966Z"
-   },
-   {
-     "id": "bd671e02-10a0-4487-9da1-02851a8b6235",
-     "title": "Re: 제로부터 시작하는 이세계 생활 3기",
-     "image": "Re 제로부터 시작하는 이세계 생활 3기.webp",
-     "namuWikiUrl": "https://namu.wiki/w/Re%3A%20%EC%A0%9C%EB%A1%9C%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%83%9D%ED%99%9C(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%203%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:25:11.203Z"
-   },
-   {
-     "id": "2209589f-9e2e-4b2a-8807-fe36f0eab7b0",
-     "title": "나 혼자만 레벨업 -ARISE FROM THE SHADOW-",
-     "image": "나 혼자만 레벨업 -ARISE FROM THE SHADOW-.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%82%98%20%ED%98%BC%EC%9E%90%EB%A7%8C%20%EB%A0%88%EB%B2%A8%EC%97%85%20-ARISE%20FROM%20THE%20SHADOW-",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:26:09.090Z"
-   },
-   {
-     "id": "176270a7-2b78-48dd-a0cb-93481e130dd0",
-     "title": "LAZARUS 라자로",
-     "image": "LAZARUS 라자로.webp",
-     "namuWikiUrl": "https://namu.wiki/w/LAZARUS%20%EB%9D%BC%EC%9E%90%EB%A1%9C",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:26:55.732Z"
-   },
-   {
-     "id": "a90ba77d-4fc0-45cb-a2cb-4e5a6479dfd2",
-     "title": "환생했는데 제7왕자라 내맘대로 마술을 연마합니다 2기",
-     "image": "환생했는데 제7왕자라 내맘대로 마술을 연마합니다 2기.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%ED%99%98%EC%83%9D%ED%96%88%EB%8A%94%EB%8D%B0%20%EC%A0%9C7%EC%99%95%EC%9E%90%EB%9D%BC%20%EB%82%B4%EB%A7%98%EB%8C%80%EB%A1%9C%20%EB%A7%88%EC%88%A0%EC%9D%84%20%EC%97%B0%EB%A7%88%ED%95%A9%EB%8B%88%EB%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:27:59.813Z"
-   },
-   {
-     "id": "cc9173c4-1e85-48e3-b87b-641ef1cc1c77",
-     "title": "이세계 콰르텟 3",
-     "image": "이세계 콰르텟 3.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%BD%B0%EB%A5%B4%ED%85%9F%203",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:28:54.617Z"
-   },
-   {
-     "id": "bf2dd701-8a2b-43b8-ae85-ce0e640e105d",
-     "title": "스파이 패밀리 Season 3",
-     "image": "스파이 패밀리 Season 3.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%8A%A4%ED%8C%8C%EC%9D%B4%20%ED%8C%A8%EB%B0%80%EB%A6%AC(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%203%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:30:13.937Z"
-   },
-   {
-     "id": "3a9a43a8-9242-46a1-9675-acc2019c5225",
-     "title": "괴수 8호",
-     "image": "괴수 8호.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EA%B4%B4%EC%88%98%208%ED%98%B8(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:31:04.256Z"
-   },
-   {
-     "id": "4e554982-297b-4bb9-a1ed-22d1bcd692ea",
-     "title": "이 멋진 세계에 축복을! 3",
-     "image": "이 멋진 세계에 축복을! 3.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%9D%B4%20%EB%A9%8B%EC%A7%84%20%EC%84%B8%EA%B3%84%EC%97%90%20%EC%B6%95%EB%B3%B5%EC%9D%84!%203",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:31:56.938Z"
-   },
-   {
-     "id": "d9a95df6-72b4-4bfc-82a7-24876b3ed8a9",
-     "title": "환생했는데 제7왕자라 내맘대로 마술을 연마합니다",
-     "image": "환생했는데 제7왕자라 내맘대로 마술을 연마합니다.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%ED%99%98%EC%83%9D%ED%96%88%EB%8A%94%EB%8D%B0%20%EC%A0%9C7%EC%99%95%EC%9E%90%EB%9D%BC%20%EB%82%B4%EB%A7%98%EB%8C%80%EB%A1%9C%20%EB%A7%88%EC%88%A0%EC%9D%84%20%EC%97%B0%EB%A7%88%ED%95%A9%EB%8B%88%EB%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:32:47.212Z"
-   },
-   {
-     "id": "1438d9b9-0e2a-4507-94f1-2efc28a2263b",
-     "title": "나 혼자만 레벨업",
-     "image": "나 혼자만 레벨업.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%82%98%20%ED%98%BC%EC%9E%90%EB%A7%8C%20%EB%A0%88%EB%B2%A8%EC%97%85(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:33:35.227Z"
-   },
-   {
-     "id": "1d3181d8-a4ff-4fff-a58b-c247966c71a8",
-     "title": "Re: 제로부터 시작하는 이세계 생활: 빙결의 인연",
-     "image": "Re 제로부터 시작하는 이세계 생활 빙결의 인연.webp",
-     "namuWikiUrl": "https://namu.wiki/w/Re%3A%20%EC%A0%9C%EB%A1%9C%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%83%9D%ED%99%9C%3A%20%EB%B9%99%EA%B2%B0%EC%9D%98%20%EC%9D%B8%EC%97%B0",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션",
-         "영화"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:35:31.479Z"
-   },
-   {
-     "id": "367d3c10-2d7d-4b93-8b76-421735955a30",
-     "title": "주술회전",
-     "image": "주술회전.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%A3%BC%EC%88%A0%ED%9A%8C%EC%A0%84(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:36:14.388Z"
-   },
-   {
-     "id": "6ae327c1-3207-41df-b971-6bbc3dd5195e",
-     "title": "스파이 패밀리",
-     "image": "스파이 패밀리.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%8A%A4%ED%8C%8C%EC%9D%B4%20%ED%8C%A8%EB%B0%80%EB%A6%AC(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "아냐가 귀여움",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:37:26.584Z"
-   },
-   {
-     "id": "02dccdd2-408e-4061-a41b-065cebdf5896",
-     "title": "극장판 귀멸의 칼날: 무한열차편",
-     "image": "극장판 귀멸의 칼날 무한열차편.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EA%B7%B9%EC%9E%A5%ED%8C%90%20%EA%B7%80%EB%A9%B8%EC%9D%98%20%EC%B9%BC%EB%82%A0%3A%20%EB%AC%B4%ED%95%9C%EC%97%B4%EC%B0%A8%ED%8E%B8",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션",
-         "영화"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:38:36.673Z"
-   },
-   {
-     "id": "38aed6af-f060-45e9-b76d-9c8238146e94",
-     "title": "방패 용사 성공담",
-     "image": "방패 용사 성공담.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%B0%A9%ED%8C%A8%20%EC%9A%A9%EC%82%AC%20%EC%84%B1%EA%B3%B5%EB%8B%B4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:39:52.582Z"
-   },
-   {
-     "id": "39c4a280-3164-4b11-9e49-124809c062ae",
-     "title": "Re: 제로부터 시작하는 이세계 생활 2기",
-     "image": "Re 제로부터 시작하는 이세계 생활 2기.webp",
-     "namuWikiUrl": "https://namu.wiki/w/Re%3A%20%EC%A0%9C%EB%A1%9C%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%83%9D%ED%99%9C(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:41:13.419Z"
-   },
-   {
-       "id": "38638aa5-61cc-4f36-9b9f-169a1dbda643",
-       "title": "극장판 이세계 콰르텟: 어나더 월드",
-       "image": "극장판 이세계 콰르텟 어나더 월드.webp",
-       "namuWikiUrl": "https://namu.wiki/w/%EA%B7%B9%EC%9E%A5%ED%8C%90%20%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%BD%B0%EB%A5%B4%ED%85%9F%3A%20%EC%96%B4%EB%82%98%EB%8D%94%20%EC%9B%94%EB%93%9C",
-       "watchedAt": "",
-       "rating": 4,
-       "review": "",
-       "longReview": "",
-       "types": [
-           "애니메이션",
-           "영화"
-       ],
-       "status": "completed",
-       "createdAt": "2026-10-30T10:42:38.590Z"
-   },
-   {
-       "id": "132921be-d20e-4435-b359-37bc8919d057",
-       "title": "고블린 슬레이어",
-       "image": "고블린 슬레이어.webp",
-       "namuWikiUrl": "https://namu.wiki/w/%EA%B3%A0%EB%B8%94%EB%A6%B0%20%EC%8A%AC%EB%A0%88%EC%9D%B4%EC%96%B4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-       "watchedAt": "",
-       "rating": 4,
-       "review": "",
-       "longReview": "",
-       "types": [
-           "애니메이션"
-       ],
-       "status": "completed",
-       "createdAt": "2026-10-30T10:43:21.335Z"
-   },
-   {
-     "id": "c9805db6-dfe7-41fd-88cc-d74ccb7e620d",
-     "title": "원펀맨 2기",
-     "image": "원펀맨 2기.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%9B%90%ED%8E%80%EB%A7%A8(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:44:38.976Z"
-   },
-   {
-     "id": "0258939b-8aac-427d-a16e-e05c3ec2b55f",
-     "title": "가브릴 드롭아웃",
-     "image": "가브릴 드롭아웃.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EA%B0%80%EB%B8%8C%EB%A6%B4%20%EB%93%9C%EB%A1%AD%EC%95%84%EC%9B%83/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "나의 일본 애니메이션 입덕작",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "lifeWork" : true,
-     "status": "completed",
-     "createdAt": "2026-10-30T10:45:29.481Z"
-   },
-   {
-     "id": "77f701c8-0b83-4eb6-bd97-fffa887ad344",
-     "title": "침략! 오징어 소녀",
-     "image": "침략! 오징어 소녀.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%B9%A8%EB%9E%B5!%20%EC%98%A4%EC%A7%95%EC%96%B4%20%EC%86%8C%EB%85%80(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:46:17.924Z"
-   },
-   {
-     "id": "f1501e57-2fbf-4873-98ab-02ae0f6843b9",
-     "title": "마왕성에서 잘 자요",
-     "image": "마왕성에서 잘 자요.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%A7%88%EC%99%95%EC%84%B1%EC%97%90%EC%84%9C%20%EC%9E%98%20%EC%9E%90%EC%9A%94/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:47:18.751Z"
-   },
-   {
-     "id": "f8452df2-fec3-44bc-b720-e778a31ab2d2",
-     "title": "소드 아트 온라인",
-     "image": "소드 아트 온라인.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%86%8C%EB%93%9C%20%EC%95%84%ED%8A%B8%20%EC%98%A8%EB%9D%BC%EC%9D%B8(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:48:22.502Z"
-   },
-   {
-     "id": "ebaa978c-7dd9-4007-a3ff-1132aa07ff68",
-     "title": "소드 아트 온라인 Ⅱ",
-     "image": "소드 아트 온라인 Ⅱ.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%86%8C%EB%93%9C%20%EC%95%84%ED%8A%B8%20%EC%98%A8%EB%9D%BC%EC%9D%B8%20%E2%85%A1",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:49:20.358Z"
-   },
-   {
-     "id": "b5b6fa17-2c03-498f-8549-2d4cf8f66706",
-     "title": "약속의 네버랜드 2",
-     "image": "약속의 네버랜드 2.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%95%BD%EC%86%8D%EC%9D%98%20%EB%84%A4%EB%B2%84%EB%9E%9C%EB%93%9C(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:50:05.014Z"
-   },
-   {
-     "id": "6e086e52-3850-4267-a727-15397fb4bc59",
-     "title": "에로망가 선생",
-     "image": "에로망가 선생.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%97%90%EB%A1%9C%EB%A7%9D%EA%B0%80%20%EC%84%A0%EC%83%9D/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:50:36.687Z"
-   },
-   {
-     "id": "c9f17b62-184d-4615-bb96-612526334fcc",
-     "title": "블렌드·S",
-     "image": "블렌드·S.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%B8%94%EB%A0%8C%EB%93%9C%C2%B7S/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "함정을 조심하세요",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:51:26.083Z"
-   },
-   {
-     "id": "a5815f5d-4672-4d86-9b54-db8e2452f34f",
-     "title": "달이 이끄는 이세계 여행",
-     "image": "달이 이끄는 이세계 여행.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%8B%AC%EC%9D%B4%20%EC%9D%B4%EB%81%84%EB%8A%94%20%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%97%AC%ED%96%89(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:52:14.782Z"
-   },
-   {
-     "id": "edba3629-db7a-48ab-93fc-bcccd118ba24",
-     "title": "나의 히어로 아카데미아",
-     "image": "나의 히어로 아카데미아.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%82%98%EC%9D%98%20%ED%9E%88%EC%96%B4%EB%A1%9C%20%EC%95%84%EC%B9%B4%EB%8D%B0%EB%AF%B8%EC%95%84(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:53:00.474Z"
-   },
-   {
-     "id": "7d084149-567f-4be4-ab19-29b2ca6295be",
-     "title": "흔해빠진 직업으로 세계최강",
-     "image": "흔해빠진 직업으로 세계최강.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%ED%9D%94%ED%95%B4%EB%B9%A0%EC%A7%84%20%EC%A7%81%EC%97%85%EC%9C%BC%EB%A1%9C%20%EC%84%B8%EA%B3%84%EC%B5%9C%EA%B0%95(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:54:35.941Z"
-   },
-   {
-     "id": "85ca4f3e-05a9-42c3-bb50-3a0e1f89745a",
-     "title": "알바 뛰는 마왕님!",
-     "image": "알바 뛰는 마왕님!.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%95%8C%EB%B0%94%20%EB%9B%B0%EB%8A%94%20%EB%A7%88%EC%99%95%EB%8B%98!(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:55:16.150Z"
-   },
-   {
-     "id": "3f7ea6f3-a862-48c1-9dec-4f2907f24213",
-     "title": "오버로드",
-     "image": "오버로드.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%EB%B2%84%EB%A1%9C%EB%93%9C(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:55:57.782Z"
-   },
-   {
-     "id": "22e3a75c-a807-4835-a348-16aea6decac7",
-     "title": "오버로드 Ⅱ",
-     "image": "오버로드 Ⅱ.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%EB%B2%84%EB%A1%9C%EB%93%9C%20%E2%85%A1",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:56:52.452Z"
-   },
-   {
-     "id": "e0dec71c-1111-4011-8fbb-a9c9e29e641a",
-     "title": "오버로드 Ⅲ",
-     "image": "오버로드 Ⅲ.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%EB%B2%84%EB%A1%9C%EB%93%9C%20%E2%85%A2",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:57:32.555Z"
-   },
-   {
-     "id": "a42bfb2f-e3e5-4138-b10b-78cad722f026",
-     "title": "오버로드 Ⅳ",
-     "image": "오버로드 Ⅳ.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%EB%B2%84%EB%A1%9C%EB%93%9C%20%E2%85%A3",
-     "watchedAt": "",
-     "rating": 4.5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:58:12.591Z"
-   },
-   {
-     "id": "69863b15-f4e1-4fdf-8317-79aadde9b860",
-     "title": "이 멋진 세계에 축복을!",
-     "image": "이 멋진 세계에 축복을!.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%9D%B4%20%EB%A9%8B%EC%A7%84%20%EC%84%B8%EA%B3%84%EC%97%90%20%EC%B6%95%EB%B3%B5%EC%9D%84!(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:58:56.294Z"
-   },
-   {
-     "id": "95076de1-5556-4e38-81dc-4c42ac55bbb2",
-     "title": "이 멋진 세계에 축복을! 2",
-     "image": "이 멋진 세계에 축복을! 2.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%9D%B4%20%EB%A9%8B%EC%A7%84%20%EC%84%B8%EA%B3%84%EC%97%90%20%EC%B6%95%EB%B3%B5%EC%9D%84!%202",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T10:59:38.062Z"
-   },
-   {
-     "id": "5c3f94d2-5f1e-4161-bcd7-3df285b324ef",
-     "title": "이 멋진 세계에 축복을! 붉은 전설",
-     "image": "이 멋진 세계에 축복을! 붉은 전설.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%9D%B4%20%EB%A9%8B%EC%A7%84%20%EC%84%B8%EA%B3%84%EC%97%90%20%EC%B6%95%EB%B3%B5%EC%9D%84!%20%EB%B6%89%EC%9D%80%20%EC%A0%84%EC%84%A4",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션",
-         "영화"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T11:00:31.074Z"
-   },
-   {
-     "id": "0d59572c-5a13-4f15-8206-02cb372569b8",
-     "title": "책벌레의 하극상 ~사서가 되기 위해서라면 뭐든지 할 수 있어~",
-     "image": "책벌레의 하극상 ~사서가 되기 위해서라면 뭐든지 할 수 있어~.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%B1%85%EB%B2%8C%EB%A0%88%EC%9D%98%20%ED%95%98%EA%B7%B9%EC%83%81%20~%EC%82%AC%EC%84%9C%EA%B0%80%20%EB%90%98%EA%B8%B0%20%EC%9C%84%ED%95%B4%EC%84%9C%EB%9D%BC%EB%A9%B4%20%EB%AD%90%EB%93%A0%EC%A7%80%20%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%96%B4~(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T11:01:11.664Z"
-   },
-   {
-     "id": "ac4052de-410a-4a7e-91e3-61418cb89f63",
-     "title": "블랙 불릿",
-     "image": "블랙 불릿.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EB%B8%94%EB%9E%99%20%EB%B6%88%EB%A6%BF/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T11:02:52.616Z"
-   },
-   {
-     "id": "12f7ca13-c6b7-42ff-a485-db3452ea4f8f",
-     "title": "괴짜의 샐러드 볼",
-     "image": "괴짜의 샐러드 볼.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EA%B4%B4%EC%A7%9C%EC%9D%98%20%EC%83%90%EB%9F%AC%EB%93%9C%20%EB%B3%BC/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
-     "watchedAt": "",
-     "rating": 3.5,
-     "review": "사라가 귀여움",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T11:03:36.425Z"
-   },
-   {
-     "id": "35fd0732-484a-42ef-8b00-3b72eb917059",
-     "title": "코바야시네 메이드래곤",
-     "image": "코바야시네 메이드래곤.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%BD%94%EB%B0%94%EC%95%BC%EC%8B%9C%EB%84%A4%20%EB%A9%94%EC%9D%B4%EB%93%9C%EB%9E%98%EA%B3%A4",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T11:04:17.376Z"
-   },
-   {
-     "id": "827c0dc2-9a33-44ac-bf89-51bc60fb5453",
-     "title": "코바야시네 메이드래곤 S",
-     "image": "코바야시네 메이드래곤 S.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%BD%94%EB%B0%94%EC%95%BC%EC%8B%9C%EB%84%A4%20%EB%A9%94%EC%9D%B4%EB%93%9C%EB%9E%98%EA%B3%A4%20S",
-     "watchedAt": "",
-     "rating": 5,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T11:05:07.116Z"
-   },
-   {
-     "id": "65bfee67-e9e6-4cd8-868d-8887bbb8810e",
-     "title": "길모퉁이 마족",
-     "image": "길모퉁이 마족.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EA%B8%B8%EB%AA%A8%ED%89%81%EC%9D%B4%20%EB%A7%88%EC%A1%B1(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "모모가 귀여움",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T11:05:56.363Z"
-   },
-   {
-     "id": "abc51b72-8aab-403d-bbfa-de7bdd012ca8",
-     "title": "길모퉁이 마족 2번가",
-     "image": "길모퉁이 마족 2번가.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EA%B8%B8%EB%AA%A8%ED%89%81%EC%9D%B4%20%EB%A7%88%EC%A1%B1%202%EB%B2%88%EA%B0%80",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T11:07:31.630Z"
-   },
-   {
-     "id": "35e1f457-678d-452b-b5b9-b36aa3fe0c1d",
-     "title": "그대들은 어떻게 살 것인가",
-     "image": "그대들은 어떻게 살 것인가.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EA%B7%B8%EB%8C%80%EB%93%A4%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%82%B4%20%EA%B2%83%EC%9D%B8%EA%B0%80",
-     "watchedAt": "",
-     "rating": 3.5,
-     "review": "작가의 자화자찬. 나르시시즘",
-     "longReview": "",
-     "types": [
-         "애니메이션",
-         "영화"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T11:08:16.525Z"
-   },
-   {
-     "id": "31733d66-057d-412c-b423-f43fd9afcad7",
-     "title": "nEW GAME",
-     "image": "nEW GAME.webp",
-     "namuWikiUrl": "https://namu.wiki/w/NEW%20GAME!(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T11:09:29.892Z"
-   },
-   {
-     "id": "26f0edd3-307d-4a88-a955-6eaf64bdda97",
-     "title": "nEW GAME!!",
-     "image": "nEW GAME!!.webp",
-     "namuWikiUrl": "https://namu.wiki/w/NEW%20GAME!!",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T11:10:14.165Z"
-   },
-   {
-     "id": "74576539-c573-4adb-8137-cda7770f9320",
-     "title": "조난입니까?",
-     "image": "조난입니까.webp",
-     "namuWikiUrl": "https://namu.wiki/w/%EC%A1%B0%EB%82%9C%EC%9E%85%EB%8B%88%EA%B9%8C%3F",
-     "watchedAt": "",
-     "rating": 4,
-     "review": "조난에서 생존하는 불건전한 방법",
-     "longReview": "",
-     "types": [
-         "애니메이션"
-     ],
-     "status": "completed",
-     "createdAt": "2026-10-30T11:11:03.441Z"
-   },
-   {
+    },
+    {
+      "id": "7349d524-83b8-4028-86a7-3e981bab9705",
+      "title": "일찍이 마법소녀와 악은 적대하고 있었다.",
+      "image": "일찍이 마법소녀와 악은 적대하고 있었다.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%9D%BC%EC%B0%8D%EC%9D%B4%20%EB%A7%88%EB%B2%95%EC%86%8C%EB%85%80%EC%99%80%20%EC%95%85%EC%9D%80%20%EC%A0%81%EB%8C%80%ED%95%98%EA%B3%A0%20%EC%9E%88%EC%97%88%EB%8B%A4./%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:15:08.945Z"
+    },
+    {
+      "id": "b50d82eb-7833-4eed-949e-1c8918c2ed04",
+      "title": "도망을 잘 치는 도련님",
+      "image": "도망을 잘 치는 도련님.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%8F%84%EB%A7%9D%EC%9D%84%20%EC%9E%98%20%EC%B9%98%EB%8A%94%20%EB%8F%84%EB%A0%A8%EB%8B%98(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:16:34.130Z"
+    },
+    {
+      "id": "f4397dec-ce7c-4908-95df-45cb97e998c9",
+      "title": "바카노!",
+      "image": "바카노!.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%B0%94%EC%B9%B4%EB%85%B8!/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:17:32.557Z"
+    },
+    {
+      "id": "f35c262f-f6c9-4362-9541-0c9fe9192b2a",
+      "title": "빈란드 사가",
+      "image": "빈란드 사가.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%B9%88%EB%9E%80%EB%93%9C%20%EC%82%AC%EA%B0%80(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "바이킹 멋있다",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:18:56.018Z"
+    },
+    {
+      "id": "5ee40178-3618-4233-8d7d-08a54001d857",
+      "title": "리코리스 리코일 Friends are thieves of the time.",
+      "image": "리코리스 리코일 Friends are thieves of the time.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%A6%AC%EC%BD%94%EB%A6%AC%EC%8A%A4%20%EB%A6%AC%EC%BD%94%EC%9D%BC%20Friends%20are%20thieves%20of%20time.",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:20:46.015Z"
+    },
+    {
+      "id": "62c5078d-d27b-4132-8886-cb34a1cd4ee8",
+      "title": "신세기 에반게리온",
+      "image": "신세기 에반게리온.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%8B%A0%EC%84%B8%EA%B8%B0%20%EC%97%90%EB%B0%98%EA%B2%8C%EB%A6%AC%EC%98%A8",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "소년이여 신화가 되어라",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "lifeWork": true,
+      "status": "completed",
+      "createdAt": "2026-10-30T04:21:53.875Z"
+    },
+    {
+      "id": "a4273e1b-c11b-449e-a9aa-d145e0c3db37",
+      "title": "엔드 오브 에반게리온",
+      "image": "엔드 오브 에반게리온.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%97%94%EB%93%9C%20%EC%98%A4%EB%B8%8C%20%EC%97%90%EB%B0%98%EA%B2%8C%EB%A6%AC%EC%98%A8",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "각자이기에 아름다운 것들",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "lifeWork": true,
+      "status": "completed",
+      "createdAt": "2026-10-30T04:23:00.709Z"
+    },
+    {
+      "id": "9a3b6bb2-e578-455c-ab9b-7afd0f80181b",
+      "title": "타코피의 원죄",
+      "image": "타코피의 원죄.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%ED%83%80%EC%BD%94%ED%94%BC%EC%9D%98%20%EC%9B%90%EC%A3%84/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:23:59.208Z"
+    },
+    {
+      "id": "86e0a9d2-1082-4209-9d89-b5dcb3948935",
+      "title": "클레바테스 -마수왕과 아기와 시체 용사-",
+      "image": "클레바테스 -마수왕과 아기와 시체 용사-.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%ED%81%B4%EB%A0%88%EB%B0%94%ED%85%8C%EC%8A%A4%20-%EB%A7%88%EC%88%98%EC%99%95%EA%B3%BC%20%EC%95%84%EA%B8%B0%EC%99%80%20%EC%8B%9C%EC%B2%B4%20%EC%9A%A9%EC%82%AC-(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:25:08.570Z"
+    },
+    {
+      "id": "ac3dc008-87d4-4440-9aa1-2562e6f53dc3",
+      "title": "괴수 8호 2기",
+      "image": "괴수 8호 2기.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B4%B4%EC%88%98%208%ED%98%B8(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:26:18.086Z"
+    },
+    {
+      "id": "fb87b7ed-9867-4165-bd0f-028c3f15fccf",
+      "title": "사일런트 위치 침묵의 마녀의 비밀",
+      "image": "사일런트 위치 침묵의 마녀의 비밀.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%82%AC%EC%9D%BC%EB%9F%B0%ED%8A%B8%20%EC%9C%84%EC%B9%98%20%EC%B9%A8%EB%AC%B5%EC%9D%98%20%EB%A7%88%EB%85%80%EC%9D%98%20%EB%B9%84%EB%B0%80/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "공감하면서 볼 수 있음",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:27:20.652Z"
+    },
+    {
+      "id": "550fab15-a1e9-46c6-88da-63a96c99e4e8",
+      "title": "지. -지구의 운동에 대하여-",
+      "image": "지. -지구의 운동에 대하여-.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%A7%80.%20-%EC%A7%80%EA%B5%AC%EC%9D%98%20%EC%9A%B4%EB%8F%99%EC%97%90%20%EB%8C%80%ED%95%98%EC%97%AC-/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "표현의 자유와 성역 없는 탐구",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "lifeWork": true,
+      "status": "completed",
+      "createdAt": "2026-10-30T04:28:24.102Z"
+    },
+    {
+      "id": "0b0f8691-b013-4f61-a028-57689159f836",
+      "title": "주술회전 3기 : 사멸회유 전편",
+      "image": "주술회전 3기 사멸회유 전편.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%A3%BC%EC%88%A0%ED%9A%8C%EC%A0%84(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%203%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:29:25.993Z"
+    },
+    {
+      "id": "2c9ed009-4b77-4c3c-84b5-db16d5aa5a4b",
+      "title": "최애의 아이 3기",
+      "image": "최애의 아이 3기.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%E3%80%90%EC%B5%9C%EC%95%A0%EC%9D%98%20%EC%95%84%EC%9D%B4%E3%80%91(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%203%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:30:27.540Z"
+    },
+    {
+      "id": "2d0a805a-9fcf-40cc-996a-714f9359dc83",
+      "title": "Re: 제로부터 시작하는 이세계 생활 4기",
+      "image": "Re 제로부터 시작하는 이세계 생활 4기.webp",
+      "namuWikiUrl": "https://namu.wiki/w/Re%3A%20%EC%A0%9C%EB%A1%9C%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%83%9D%ED%99%9C(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%204%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:31:33.892Z"
+    },
+    {
+      "id": "ff002bb1-9d6c-46aa-85a9-258c34246004",
+      "title": "무직전생 ~이세계에 갔으면 최선을 다한다~",
+      "image": "무직전생 ~이세계에 갔으면 최선을 다한다~.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%AC%B4%EC%A7%81%EC%A0%84%EC%83%9D%20~%EC%9D%B4%EC%84%B8%EA%B3%84%EC%97%90%20%EA%B0%94%EC%9C%BC%EB%A9%B4%20%EC%B5%9C%EC%84%A0%EC%9D%84%20%EB%8B%A4%ED%95%9C%EB%8B%A4~(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:33:07.306Z"
+    },
+    {
+      "id": "1bc887a6-46b1-4588-8b5c-059fb7d1ed79",
+      "title": "무직전생 Ⅱ ~이세계에 갔으면 최선을 다한다~",
+      "image": "무직전생 Ⅱ ~이세계에 갔으면 최선을 다한다~.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%AC%B4%EC%A7%81%EC%A0%84%EC%83%9D%20%E2%85%A1%20~%EC%9D%B4%EC%84%B8%EA%B3%84%EC%97%90%20%EA%B0%94%EC%9C%BC%EB%A9%B4%20%EC%B5%9C%EC%84%A0%EC%9D%84%20%EB%8B%A4%ED%95%9C%EB%8B%A4~",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:34:02.042Z"
+    },
+    {
+      "id": "6b0ef630-f218-46b7-ae3d-e5a32a6100a7",
+      "title": "유녀전기 Ⅱ",
+      "image": "유녀전기 Ⅱ.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%9C%A0%EB%85%80%EC%A0%84%EA%B8%B0%20%E2%85%A1",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:35:36.311Z"
+    },
+    {
+      "id": "1621b82b-6285-410c-b621-4ee6839a5d6b",
+      "title": "무직전생 Ⅲ ~이세계에 갔으면 최선을 다한다~",
+      "image": "무직전생 Ⅲ ~이세계에 갔으면 최선을 다한다~.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%AC%B4%EC%A7%81%EC%A0%84%EC%83%9D%20%E2%85%A2%20~%EC%9D%B4%EC%84%B8%EA%B3%84%EC%97%90%20%EA%B0%94%EC%9C%BC%EB%A9%B4%20%EC%B5%9C%EC%84%A0%EC%9D%84%20%EB%8B%A4%ED%95%9C%EB%8B%A4~",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "watching",
+      "createdAt": "2026-10-30T04:37:10.519Z"
+    },
+    {
+      "id": "6d8cad89-f9c0-4eeb-88f1-de92d88a2c4f",
+      "title": "담배 고양이",
+      "image": "담배 고양이.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%8B%B4%EB%B0%B0%20%EA%B3%A0%EC%96%91%EC%9D%B4/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "망해봤자 재가 될 뿐이야. 대충 살자",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:40:04.664Z"
+    },
+    {
+      "id": "e7cfe6e2-296a-4e33-9a8b-eee6b0a236c9",
+      "title": "마왕인 내가 노예 엘프를 신부로 삼았는데 어떻게 사랑하면 되지?",
+      "image": "마왕인 내가 노예 엘프를 신부로 삼았는데 어떻게 사랑하면 되지.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%A7%88%EC%99%95%EC%9D%B8%20%EB%82%B4%EA%B0%80%20%EB%85%B8%EC%98%88%20%EC%97%98%ED%94%84%EB%A5%BC%20%EC%8B%A0%EB%B6%80%EB%A1%9C%20%EC%82%BC%EC%95%98%EB%8A%94%EB%8D%B0%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%82%AC%EB%9E%91%ED%95%98%EB%A9%B4%20%EB%90%98%EC%A7%80%3F/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:42:31.644Z"
+    },
+    {
+      "id": "a59a2356-8913-49a1-bfa3-aed62c3ed531",
+      "title": "주술회전 2기 : 시부야 사변",
+      "image": "주술회전 2기 시부야 사변.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%A3%BC%EC%88%A0%ED%9A%8C%EC%A0%84(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:45:17.058Z"
+    },
+    {
+      "id": "9ab96ea5-0134-4810-8640-4ee8e7609a89",
+      "title": "오빠는 끝!",
+      "image": "오빠는 끝!.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%EB%B9%A0%EB%8A%94%20%EB%81%9D!/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "나 이런 거 좋아하는구나",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:46:37.871Z"
+    },
+    {
+      "id": "c810f081-d8b0-4af7-ac4d-e164860ba189",
+      "title": "주술회전 0",
+      "image": "주술회전 0.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B7%B9%EC%9E%A5%ED%8C%90%20%EC%A3%BC%EC%88%A0%ED%9A%8C%EC%A0%84%200",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:47:28.671Z"
+    },
+    {
+      "id": "1f0f08d7-8b62-4dba-9f1b-58319e5fa565",
+      "title": "오드 택시",
+      "image": "오드 택시.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%EB%93%9C%20%ED%83%9D%EC%8B%9C",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:49:13.528Z"
+    },
+    {
+      "id": "b0bfa3af-4226-4bd2-9274-e79e5972d4ca",
+      "title": "단간론파 -희망의 학원과 절망의 고교생-",
+      "image": "단간론파 -희망의 학원과 절망의 고교생-.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%8B%A8%EA%B0%84%EB%A1%A0%ED%8C%8C%20-%ED%9D%AC%EB%A7%9D%EC%9D%98%20%ED%95%99%EC%9B%90%EA%B3%BC%20%EC%A0%88%EB%A7%9D%EC%9D%98%20%EA%B3%A0%EA%B5%90%EC%83%9D-%20The%20Animation",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:52:01.733Z"
+    },
+    {
+      "id": "52abe512-679f-4419-b93a-14d7da8f955d",
+      "title": "단간론파 3 -The End of the 키보가미네 학원- 미래편",
+      "image": "단간론파 3 -The End of the 키보가미네 학원- 미래편.jpg",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%8B%A8%EA%B0%84%EB%A1%A0%ED%8C%8C%203%20-The%20End%20of%20%ED%82%A4%EB%B3%B4%EA%B0%80%EB%AF%B8%EB%84%A4%20%ED%95%99%EC%9B%90-",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:54:06.122Z"
+    },
+    {
+      "id": "5c713850-2af5-4238-b0c7-ef55fb6f5467",
+      "title": "단간론파 3 -The End of the 키보가미네 학원- 절망편.jpg",
+      "image": "단간론파 3 -The End of the 키보가미네 학원- 절망편.jpg",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%8B%A8%EA%B0%84%EB%A1%A0%ED%8C%8C%203%20-The%20End%20of%20%ED%82%A4%EB%B3%B4%EA%B0%80%EB%AF%B8%EB%84%A4%20%ED%95%99%EC%9B%90-",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T04:55:11.965Z"
+    },
+    {
+      "id": "ef8e70a2-4cc9-4e7f-9b76-a38a78c89572",
+      "title": "이세계 콰르텟",
+      "image": "이세계 콰르텟.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%BD%B0%EB%A5%B4%ED%85%9F",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:02:45.656Z"
+    },
+    {
+      "id": "e392b8de-9c48-4ccb-82a1-41a9c0d2e382",
+      "title": "이세계 콰르텟 2",
+      "image": "이세계 콰르텟 2.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%BD%B0%EB%A5%B4%ED%85%9F%202",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:03:55.826Z"
+    },
+    {
+      "id": "dfd1b892-b7e8-46d1-b85a-9500aa4e55a5",
+      "title": "유녀전기",
+      "image": "유녀전기.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%9C%A0%EB%85%80%EC%A0%84%EA%B8%B0(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:05:42.942Z"
+    },
+    {
+      "id": "d3a0cad3-04eb-47a9-9365-2c51e4bc70dd",
+      "title": "카구야 님은 고백받고 싶어? ~천재들의 연애 두뇌전~ 2기",
+      "image": "카구야 님은 고백받고 싶어 ~천재들의 연애 두뇌전~ 2기.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%B9%B4%EA%B5%AC%EC%95%BC%20%EB%8B%98%EC%9D%80%20%EA%B3%A0%EB%B0%B1%EB%B0%9B%EA%B3%A0%20%EC%8B%B6%EC%96%B4%3F%20~%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%98%20%EC%97%B0%EC%95%A0%20%EB%91%90%EB%87%8C%EC%A0%84~",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:06:50.478Z"
+    },
+    {
+      "id": "d6f217e4-ffff-49cf-bb12-5aaa8eb774d9",
+      "title": "카구야 님은 고백받고 싶어? ~천재들의 연애 두뇌전~",
+      "image": "카구야 님은 고백받고 싶어 ~천재들의 연애 두뇌전~.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%B9%B4%EA%B5%AC%EC%95%BC%20%EB%8B%98%EC%9D%80%20%EA%B3%A0%EB%B0%B1%EB%B0%9B%EA%B3%A0%20%EC%8B%B6%EC%96%B4%20~%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%98%20%EC%97%B0%EC%95%A0%20%EB%91%90%EB%87%8C%EC%A0%84~(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:08:24.931Z"
+    },
+    {
+      "id": "5901b814-927b-4e69-9682-535e65e6a84e",
+      "title": "카구야 님은 고백받고 싶어 -울트라 로맨틱-",
+      "image": "카구야 님은 고백받고 싶어 -울트라 로맨틱-.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%B9%B4%EA%B5%AC%EC%95%BC%20%EB%8B%98%EC%9D%80%20%EA%B3%A0%EB%B0%B1%EB%B0%9B%EA%B3%A0%20%EC%8B%B6%EC%96%B4%20-%EC%9A%B8%ED%8A%B8%EB%9D%BC%20%EB%A1%9C%EB%A7%A8%ED%8B%B1-",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:09:11.266Z"
+    },
+    {
+      "id": "95d76d74-dc22-4a9e-adbe-eeb68005d15f",
+      "title": "역경무뢰 카이지",
+      "image": "역경무뢰 카이지.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%97%AD%EA%B2%BD%EB%AC%B4%EB%A2%B0%20%EC%B9%B4%EC%9D%B4%EC%A7%80(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:09:59.574Z"
+    },
+    {
+      "id": "a488aade-6a35-4e5a-b007-ffb784123ec1",
+      "title": "역경무뢰 카이지 파계록편",
+      "image": "역경무뢰 카이지 파계록편.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%97%AD%EA%B2%BD%EB%AC%B4%EB%A2%B0%20%EC%B9%B4%EC%9D%B4%EC%A7%80%20%ED%8C%8C%EA%B3%84%EB%A1%9D%ED%8E%B8",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:11:05.124Z"
+    },
+    {
+      "id": "c8b07ea7-3021-4c46-b5f4-df3417fe6b1a",
+      "title": "암살교실",
+      "image": "암살교실.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%95%94%EC%82%B4%EA%B5%90%EC%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:11:46.270Z"
+    },
+    {
+      "id": "df23e71f-c89a-4e3b-8155-04b1927c9db3",
+      "title": "노 게임 노 라이프",
+      "image": "노 게임 노 라이프.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%85%B8%20%EA%B2%8C%EC%9E%84%20%EB%85%B8%20%EB%9D%BC%EC%9D%B4%ED%94%84(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:12:34.999Z"
+    },
+    {
+      "id": "aefdaf1a-dffb-451d-949d-c5b6debc5448",
+      "title": "청춘 돼지는 바니걸 선배의 꿈을 꾸지 않는다",
+      "image": "청춘 돼지는 바니걸 선배의 꿈을 꾸지 않는다.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%B2%AD%EC%B6%98%20%EB%8F%BC%EC%A7%80%EB%8A%94%20%EB%B0%94%EB%8B%88%EA%B1%B8%20%EC%84%A0%EB%B0%B0%EC%9D%98%20%EA%BF%88%EC%9D%84%20%EA%BE%B8%EC%A7%80%20%EC%95%8A%EB%8A%94%EB%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:13:42.664Z"
+    },
+    {
+      "id": "6b0ff321-4423-43f0-8c4f-58993622945f",
+      "title": "청춘 돼지는 꿈꾸는 소녀의 꿈을 꾸지 않는다",
+      "image": "청춘 돼지는 꿈꾸는 소녀의 꿈을 꾸지 않는다.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%B2%AD%EC%B6%98%20%EB%8F%BC%EC%A7%80%EB%8A%94%20%EA%BF%88%EA%BE%B8%EB%8A%94%20%EC%86%8C%EB%85%80%EC%9D%98%20%EA%BF%88%EC%9D%84%20%EA%BE%B8%EC%A7%80%20%EC%95%8A%EB%8A%94%EB%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:14:34.903Z"
+    },
+    {
+      "id": "94176754-db37-4d40-9d16-b53b6191b3fa",
+      "title": "청춘 돼지는 외출하는 여동생의 꿈을 꾸지 않는다",
+      "image": "청춘 돼지는 외출하는 여동생의 꿈을 꾸지 않는다.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%B2%AD%EC%B6%98%20%EB%8F%BC%EC%A7%80%EB%8A%94%20%EC%99%B8%EC%B6%9C%ED%95%98%EB%8A%94%20%EC%97%AC%EB%8F%99%EC%83%9D%EC%9D%98%20%EA%BF%88%EC%9D%84%20%EA%BE%B8%EC%A7%80%20%EC%95%8A%EB%8A%94%EB%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:16:03.620Z"
+    },
+    {
+      "id": "c54c77ad-f4d3-491d-a6da-088137c598a9",
+      "title": "청춘 돼지는 책가방 소녀의 꿈을 꾸지 않는다",
+      "image": "청춘 돼지는 책가방 소녀의 꿈을 꾸지 않는다.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%B2%AD%EC%B6%98%20%EB%8F%BC%EC%A7%80%EB%8A%94%20%EC%B1%85%EA%B0%80%EB%B0%A9%20%EC%86%8C%EB%85%80%EC%9D%98%20%EA%BF%88%EC%9D%84%20%EA%BE%B8%EC%A7%80%20%EC%95%8A%EB%8A%94%EB%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:17:12.921Z"
+    },
+    {
+      "id": "f502cdd1-5c1f-4b77-a173-17bbb1f9dc1a",
+      "title": "진격의 거인 2기",
+      "image": "진격의 거인 2기.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%A7%84%EA%B2%A9%EC%9D%98%20%EA%B1%B0%EC%9D%B8(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:18:22.800Z"
+    },
+    {
+      "id": "731ecfd6-4d07-4ddb-87b4-7d5f63ae793c",
+      "title": "진격의 거인 3기",
+      "image": "진격의 거인 3기.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%A7%84%EA%B2%A9%EC%9D%98%20%EA%B1%B0%EC%9D%B8(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%203%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:19:20.298Z"
+    },
+    {
+      "id": "c280584b-db9c-4eb8-a63e-481054a3597a",
+      "title": "종말의 세라프",
+      "image": "종말의 세라프.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%A2%85%EB%A7%90%EC%9D%98%20%EC%84%B8%EB%9D%BC%ED%94%84/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:20:11.552Z"
+    },
+    {
+      "id": "c666e375-0633-4e84-99dd-5a6eea644f32",
+      "title": "마계학교 이루마 군",
+      "image": "마계학교 이루마 군.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%A7%88%EA%B3%84%ED%95%99%EA%B5%90%20%EC%9D%B4%EB%A3%A8%EB%A7%88%EA%B5%B0(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:21:02.729Z"
+    },
+    {
+      "id": "5a9b2451-4321-4084-9eef-2d28a53b8e69",
+      "title": "극장판 소드 아트 온라인 -프로그레시브- 별 없는 밤의 아리아",
+      "image": "극장판 소드 아트 온라인 -프로그레시브- 별 없는 밤의 아리아.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B7%B9%EC%9E%A5%ED%8C%90%20%EC%86%8C%EB%93%9C%20%EC%95%84%ED%8A%B8%20%EC%98%A8%EB%9D%BC%EC%9D%B8%20-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%A0%88%EC%8B%9C%EB%B8%8C-%20%EB%B3%84%20%EC%97%86%EB%8A%94%20%EB%B0%A4%EC%9D%98%20%EC%95%84%EB%A6%AC%EC%95%84",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:22:31.797Z"
+    },
+    {
+      "id": "fcf9ff58-efe4-4ba8-a795-198a51a8d59b",
+      "title": "던전 관리인",
+      "image": "던전 관리인.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%8D%98%EC%A0%84%20%EA%B4%80%EB%A6%AC%EC%9D%B8/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:23:06.336Z"
+    },
+    {
+      "id": "8c2ec3e4-a426-4a99-bf36-488bcbf9dc3e",
+      "title": "최애의 아이 2기",
+      "image": "최애의 아이 2기.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%E3%80%90%EC%B5%9C%EC%95%A0%EC%9D%98%20%EC%95%84%EC%9D%B4%E3%80%91(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:23:43.966Z"
+    },
+    {
+      "id": "bd671e02-10a0-4487-9da1-02851a8b6235",
+      "title": "Re: 제로부터 시작하는 이세계 생활 3기",
+      "image": "Re 제로부터 시작하는 이세계 생활 3기.webp",
+      "namuWikiUrl": "https://namu.wiki/w/Re%3A%20%EC%A0%9C%EB%A1%9C%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%83%9D%ED%99%9C(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%203%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:25:11.203Z"
+    },
+    {
+      "id": "2209589f-9e2e-4b2a-8807-fe36f0eab7b0",
+      "title": "나 혼자만 레벨업 -ARISE FROM THE SHADOW-",
+      "image": "나 혼자만 레벨업 -ARISE FROM THE SHADOW-.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%82%98%20%ED%98%BC%EC%9E%90%EB%A7%8C%20%EB%A0%88%EB%B2%A8%EC%97%85%20-ARISE%20FROM%20THE%20SHADOW-",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:26:09.090Z"
+    },
+    {
+      "id": "176270a7-2b78-48dd-a0cb-93481e130dd0",
+      "title": "LAZARUS 라자로",
+      "image": "LAZARUS 라자로.webp",
+      "namuWikiUrl": "https://namu.wiki/w/LAZARUS%20%EB%9D%BC%EC%9E%90%EB%A1%9C",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:26:55.732Z"
+    },
+    {
+      "id": "a90ba77d-4fc0-45cb-a2cb-4e5a6479dfd2",
+      "title": "환생했는데 제7왕자라 내맘대로 마술을 연마합니다 2기",
+      "image": "환생했는데 제7왕자라 내맘대로 마술을 연마합니다 2기.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%ED%99%98%EC%83%9D%ED%96%88%EB%8A%94%EB%8D%B0%20%EC%A0%9C7%EC%99%95%EC%9E%90%EB%9D%BC%20%EB%82%B4%EB%A7%98%EB%8C%80%EB%A1%9C%20%EB%A7%88%EC%88%A0%EC%9D%84%20%EC%97%B0%EB%A7%88%ED%95%A9%EB%8B%88%EB%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:27:59.813Z"
+    },
+    {
+      "id": "cc9173c4-1e85-48e3-b87b-641ef1cc1c77",
+      "title": "이세계 콰르텟 3",
+      "image": "이세계 콰르텟 3.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%BD%B0%EB%A5%B4%ED%85%9F%203",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:28:54.617Z"
+    },
+    {
+      "id": "bf2dd701-8a2b-43b8-ae85-ce0e640e105d",
+      "title": "스파이 패밀리 Season 3",
+      "image": "스파이 패밀리 Season 3.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%8A%A4%ED%8C%8C%EC%9D%B4%20%ED%8C%A8%EB%B0%80%EB%A6%AC(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%203%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:30:13.937Z"
+    },
+    {
+      "id": "3a9a43a8-9242-46a1-9675-acc2019c5225",
+      "title": "괴수 8호",
+      "image": "괴수 8호.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B4%B4%EC%88%98%208%ED%98%B8(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:31:04.256Z"
+    },
+    {
+      "id": "4e554982-297b-4bb9-a1ed-22d1bcd692ea",
+      "title": "이 멋진 세계에 축복을! 3",
+      "image": "이 멋진 세계에 축복을! 3.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%9D%B4%20%EB%A9%8B%EC%A7%84%20%EC%84%B8%EA%B3%84%EC%97%90%20%EC%B6%95%EB%B3%B5%EC%9D%84!%203",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:31:56.938Z"
+    },
+    {
+      "id": "d9a95df6-72b4-4bfc-82a7-24876b3ed8a9",
+      "title": "환생했는데 제7왕자라 내맘대로 마술을 연마합니다",
+      "image": "환생했는데 제7왕자라 내맘대로 마술을 연마합니다.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%ED%99%98%EC%83%9D%ED%96%88%EB%8A%94%EB%8D%B0%20%EC%A0%9C7%EC%99%95%EC%9E%90%EB%9D%BC%20%EB%82%B4%EB%A7%98%EB%8C%80%EB%A1%9C%20%EB%A7%88%EC%88%A0%EC%9D%84%20%EC%97%B0%EB%A7%88%ED%95%A9%EB%8B%88%EB%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:32:47.212Z"
+    },
+    {
+      "id": "1438d9b9-0e2a-4507-94f1-2efc28a2263b",
+      "title": "나 혼자만 레벨업",
+      "image": "나 혼자만 레벨업.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%82%98%20%ED%98%BC%EC%9E%90%EB%A7%8C%20%EB%A0%88%EB%B2%A8%EC%97%85(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:33:35.227Z"
+    },
+    {
+      "id": "1d3181d8-a4ff-4fff-a58b-c247966c71a8",
+      "title": "Re: 제로부터 시작하는 이세계 생활: 빙결의 인연",
+      "image": "Re 제로부터 시작하는 이세계 생활 빙결의 인연.webp",
+      "namuWikiUrl": "https://namu.wiki/w/Re%3A%20%EC%A0%9C%EB%A1%9C%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%83%9D%ED%99%9C%3A%20%EB%B9%99%EA%B2%B0%EC%9D%98%20%EC%9D%B8%EC%97%B0",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:35:31.479Z"
+    },
+    {
+      "id": "367d3c10-2d7d-4b93-8b76-421735955a30",
+      "title": "주술회전",
+      "image": "주술회전.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%A3%BC%EC%88%A0%ED%9A%8C%EC%A0%84(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:36:14.388Z"
+    },
+    {
+      "id": "6ae327c1-3207-41df-b971-6bbc3dd5195e",
+      "title": "스파이 패밀리",
+      "image": "스파이 패밀리.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%8A%A4%ED%8C%8C%EC%9D%B4%20%ED%8C%A8%EB%B0%80%EB%A6%AC(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "아냐가 귀여움",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:37:26.584Z"
+    },
+    {
+      "id": "02dccdd2-408e-4061-a41b-065cebdf5896",
+      "title": "극장판 귀멸의 칼날: 무한열차편",
+      "image": "극장판 귀멸의 칼날 무한열차편.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B7%B9%EC%9E%A5%ED%8C%90%20%EA%B7%80%EB%A9%B8%EC%9D%98%20%EC%B9%BC%EB%82%A0%3A%20%EB%AC%B4%ED%95%9C%EC%97%B4%EC%B0%A8%ED%8E%B8",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:38:36.673Z"
+    },
+    {
+      "id": "38aed6af-f060-45e9-b76d-9c8238146e94",
+      "title": "방패 용사 성공담",
+      "image": "방패 용사 성공담.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%B0%A9%ED%8C%A8%20%EC%9A%A9%EC%82%AC%20%EC%84%B1%EA%B3%B5%EB%8B%B4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:39:52.582Z"
+    },
+    {
+      "id": "39c4a280-3164-4b11-9e49-124809c062ae",
+      "title": "Re: 제로부터 시작하는 이세계 생활 2기",
+      "image": "Re 제로부터 시작하는 이세계 생활 2기.webp",
+      "namuWikiUrl": "https://namu.wiki/w/Re%3A%20%EC%A0%9C%EB%A1%9C%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%83%9D%ED%99%9C(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:41:13.419Z"
+    },
+    {
+      "id": "38638aa5-61cc-4f36-9b9f-169a1dbda643",
+      "title": "극장판 이세계 콰르텟: 어나더 월드",
+      "image": "극장판 이세계 콰르텟 어나더 월드.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B7%B9%EC%9E%A5%ED%8C%90%20%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%BD%B0%EB%A5%B4%ED%85%9F%3A%20%EC%96%B4%EB%82%98%EB%8D%94%20%EC%9B%94%EB%93%9C",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:42:38.590Z"
+    },
+    {
+      "id": "132921be-d20e-4435-b359-37bc8919d057",
+      "title": "고블린 슬레이어",
+      "image": "고블린 슬레이어.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B3%A0%EB%B8%94%EB%A6%B0%20%EC%8A%AC%EB%A0%88%EC%9D%B4%EC%96%B4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:43:21.335Z"
+    },
+    {
+      "id": "c9805db6-dfe7-41fd-88cc-d74ccb7e620d",
+      "title": "원펀맨 2기",
+      "image": "원펀맨 2기.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%9B%90%ED%8E%80%EB%A7%A8(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:44:38.976Z"
+    },
+    {
+      "id": "0258939b-8aac-427d-a16e-e05c3ec2b55f",
+      "title": "가브릴 드롭아웃",
+      "image": "가브릴 드롭아웃.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B0%80%EB%B8%8C%EB%A6%B4%20%EB%93%9C%EB%A1%AD%EC%95%84%EC%9B%83/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "나의 일본 애니메이션 입덕작",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "lifeWork": true,
+      "status": "completed",
+      "createdAt": "2026-10-30T10:45:29.481Z"
+    },
+    {
+      "id": "77f701c8-0b83-4eb6-bd97-fffa887ad344",
+      "title": "침략! 오징어 소녀",
+      "image": "침략! 오징어 소녀.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%B9%A8%EB%9E%B5!%20%EC%98%A4%EC%A7%95%EC%96%B4%20%EC%86%8C%EB%85%80(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:46:17.924Z"
+    },
+    {
+      "id": "f1501e57-2fbf-4873-98ab-02ae0f6843b9",
+      "title": "마왕성에서 잘 자요",
+      "image": "마왕성에서 잘 자요.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%A7%88%EC%99%95%EC%84%B1%EC%97%90%EC%84%9C%20%EC%9E%98%20%EC%9E%90%EC%9A%94/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:47:18.751Z"
+    },
+    {
+      "id": "f8452df2-fec3-44bc-b720-e778a31ab2d2",
+      "title": "소드 아트 온라인",
+      "image": "소드 아트 온라인.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%86%8C%EB%93%9C%20%EC%95%84%ED%8A%B8%20%EC%98%A8%EB%9D%BC%EC%9D%B8(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:48:22.502Z"
+    },
+    {
+      "id": "ebaa978c-7dd9-4007-a3ff-1132aa07ff68",
+      "title": "소드 아트 온라인 Ⅱ",
+      "image": "소드 아트 온라인 Ⅱ.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%86%8C%EB%93%9C%20%EC%95%84%ED%8A%B8%20%EC%98%A8%EB%9D%BC%EC%9D%B8%20%E2%85%A1",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:49:20.358Z"
+    },
+    {
+      "id": "b5b6fa17-2c03-498f-8549-2d4cf8f66706",
+      "title": "약속의 네버랜드 2",
+      "image": "약속의 네버랜드 2.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%95%BD%EC%86%8D%EC%9D%98%20%EB%84%A4%EB%B2%84%EB%9E%9C%EB%93%9C(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:50:05.014Z"
+    },
+    {
+      "id": "6e086e52-3850-4267-a727-15397fb4bc59",
+      "title": "에로망가 선생",
+      "image": "에로망가 선생.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%97%90%EB%A1%9C%EB%A7%9D%EA%B0%80%20%EC%84%A0%EC%83%9D/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:50:36.687Z"
+    },
+    {
+      "id": "c9f17b62-184d-4615-bb96-612526334fcc",
+      "title": "블렌드·S",
+      "image": "블렌드·S.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%B8%94%EB%A0%8C%EB%93%9C%C2%B7S/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "함정을 조심하세요",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:51:26.083Z"
+    },
+    {
+      "id": "a5815f5d-4672-4d86-9b54-db8e2452f34f",
+      "title": "달이 이끄는 이세계 여행",
+      "image": "달이 이끄는 이세계 여행.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%8B%AC%EC%9D%B4%20%EC%9D%B4%EB%81%84%EB%8A%94%20%EC%9D%B4%EC%84%B8%EA%B3%84%20%EC%97%AC%ED%96%89(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:52:14.782Z"
+    },
+    {
+      "id": "edba3629-db7a-48ab-93fc-bcccd118ba24",
+      "title": "나의 히어로 아카데미아",
+      "image": "나의 히어로 아카데미아.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%82%98%EC%9D%98%20%ED%9E%88%EC%96%B4%EB%A1%9C%20%EC%95%84%EC%B9%B4%EB%8D%B0%EB%AF%B8%EC%95%84(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:53:00.474Z"
+    },
+    {
+      "id": "7d084149-567f-4be4-ab19-29b2ca6295be",
+      "title": "흔해빠진 직업으로 세계최강",
+      "image": "흔해빠진 직업으로 세계최강.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%ED%9D%94%ED%95%B4%EB%B9%A0%EC%A7%84%20%EC%A7%81%EC%97%85%EC%9C%BC%EB%A1%9C%20%EC%84%B8%EA%B3%84%EC%B5%9C%EA%B0%95(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:54:35.941Z"
+    },
+    {
+      "id": "85ca4f3e-05a9-42c3-bb50-3a0e1f89745a",
+      "title": "알바 뛰는 마왕님!",
+      "image": "알바 뛰는 마왕님!.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%95%8C%EB%B0%94%20%EB%9B%B0%EB%8A%94%20%EB%A7%88%EC%99%95%EB%8B%98!(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:55:16.150Z"
+    },
+    {
+      "id": "3f7ea6f3-a862-48c1-9dec-4f2907f24213",
+      "title": "오버로드",
+      "image": "오버로드.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%EB%B2%84%EB%A1%9C%EB%93%9C(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:55:57.782Z"
+    },
+    {
+      "id": "22e3a75c-a807-4835-a348-16aea6decac7",
+      "title": "오버로드 Ⅱ",
+      "image": "오버로드 Ⅱ.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%EB%B2%84%EB%A1%9C%EB%93%9C%20%E2%85%A1",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:56:52.452Z"
+    },
+    {
+      "id": "e0dec71c-1111-4011-8fbb-a9c9e29e641a",
+      "title": "오버로드 Ⅲ",
+      "image": "오버로드 Ⅲ.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%EB%B2%84%EB%A1%9C%EB%93%9C%20%E2%85%A2",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:57:32.555Z"
+    },
+    {
+      "id": "a42bfb2f-e3e5-4138-b10b-78cad722f026",
+      "title": "오버로드 Ⅳ",
+      "image": "오버로드 Ⅳ.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%EB%B2%84%EB%A1%9C%EB%93%9C%20%E2%85%A3",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:58:12.591Z"
+    },
+    {
+      "id": "69863b15-f4e1-4fdf-8317-79aadde9b860",
+      "title": "이 멋진 세계에 축복을!",
+      "image": "이 멋진 세계에 축복을!.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%9D%B4%20%EB%A9%8B%EC%A7%84%20%EC%84%B8%EA%B3%84%EC%97%90%20%EC%B6%95%EB%B3%B5%EC%9D%84!(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:58:56.294Z"
+    },
+    {
+      "id": "95076de1-5556-4e38-81dc-4c42ac55bbb2",
+      "title": "이 멋진 세계에 축복을! 2",
+      "image": "이 멋진 세계에 축복을! 2.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%9D%B4%20%EB%A9%8B%EC%A7%84%20%EC%84%B8%EA%B3%84%EC%97%90%20%EC%B6%95%EB%B3%B5%EC%9D%84!%202",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T10:59:38.062Z"
+    },
+    {
+      "id": "5c3f94d2-5f1e-4161-bcd7-3df285b324ef",
+      "title": "이 멋진 세계에 축복을! 붉은 전설",
+      "image": "이 멋진 세계에 축복을! 붉은 전설.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%9D%B4%20%EB%A9%8B%EC%A7%84%20%EC%84%B8%EA%B3%84%EC%97%90%20%EC%B6%95%EB%B3%B5%EC%9D%84!%20%EB%B6%89%EC%9D%80%20%EC%A0%84%EC%84%A4",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "status": "completed",
+      "createdAt": "2026-10-30T11:00:31.074Z"
+    },
+    {
+      "id": "0d59572c-5a13-4f15-8206-02cb372569b8",
+      "title": "책벌레의 하극상 ~사서가 되기 위해서라면 뭐든지 할 수 있어~",
+      "image": "책벌레의 하극상 ~사서가 되기 위해서라면 뭐든지 할 수 있어~.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%B1%85%EB%B2%8C%EB%A0%88%EC%9D%98%20%ED%95%98%EA%B7%B9%EC%83%81%20~%EC%82%AC%EC%84%9C%EA%B0%80%20%EB%90%98%EA%B8%B0%20%EC%9C%84%ED%95%B4%EC%84%9C%EB%9D%BC%EB%A9%B4%20%EB%AD%90%EB%93%A0%EC%A7%80%20%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%96%B4~(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T11:01:11.664Z"
+    },
+    {
+      "id": "ac4052de-410a-4a7e-91e3-61418cb89f63",
+      "title": "블랙 불릿",
+      "image": "블랙 불릿.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%B8%94%EB%9E%99%20%EB%B6%88%EB%A6%BF/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T11:02:52.616Z"
+    },
+    {
+      "id": "12f7ca13-c6b7-42ff-a485-db3452ea4f8f",
+      "title": "괴짜의 샐러드 볼",
+      "image": "괴짜의 샐러드 볼.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B4%B4%EC%A7%9C%EC%9D%98%20%EC%83%90%EB%9F%AC%EB%93%9C%20%EB%B3%BC/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98",
+      "watchedAt": "",
+      "rating": 3.5,
+      "review": "사라가 귀여움",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T11:03:36.425Z"
+    },
+    {
+      "id": "35fd0732-484a-42ef-8b00-3b72eb917059",
+      "title": "코바야시네 메이드래곤",
+      "image": "코바야시네 메이드래곤.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%BD%94%EB%B0%94%EC%95%BC%EC%8B%9C%EB%84%A4%20%EB%A9%94%EC%9D%B4%EB%93%9C%EB%9E%98%EA%B3%A4",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T11:04:17.376Z"
+    },
+    {
+      "id": "827c0dc2-9a33-44ac-bf89-51bc60fb5453",
+      "title": "코바야시네 메이드래곤 S",
+      "image": "코바야시네 메이드래곤 S.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%BD%94%EB%B0%94%EC%95%BC%EC%8B%9C%EB%84%A4%20%EB%A9%94%EC%9D%B4%EB%93%9C%EB%9E%98%EA%B3%A4%20S",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T11:05:07.116Z"
+    },
+    {
+      "id": "65bfee67-e9e6-4cd8-868d-8887bbb8810e",
+      "title": "길모퉁이 마족",
+      "image": "길모퉁이 마족.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B8%B8%EB%AA%A8%ED%89%81%EC%9D%B4%20%EB%A7%88%EC%A1%B1(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "모모가 귀여움",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T11:05:56.363Z"
+    },
+    {
+      "id": "abc51b72-8aab-403d-bbfa-de7bdd012ca8",
+      "title": "길모퉁이 마족 2번가",
+      "image": "길모퉁이 마족 2번가.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B8%B8%EB%AA%A8%ED%89%81%EC%9D%B4%20%EB%A7%88%EC%A1%B1%202%EB%B2%88%EA%B0%80",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T11:07:31.630Z"
+    },
+    {
+      "id": "35e1f457-678d-452b-b5b9-b36aa3fe0c1d",
+      "title": "그대들은 어떻게 살 것인가",
+      "image": "그대들은 어떻게 살 것인가.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B7%B8%EB%8C%80%EB%93%A4%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%82%B4%20%EA%B2%83%EC%9D%B8%EA%B0%80",
+      "watchedAt": "",
+      "rating": 3.5,
+      "review": "작가의 자화자찬. 나르시시즘",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "status": "completed",
+      "createdAt": "2026-10-30T11:08:16.525Z"
+    },
+    {
+      "id": "31733d66-057d-412c-b423-f43fd9afcad7",
+      "title": "nEW GAME",
+      "image": "nEW GAME.webp",
+      "namuWikiUrl": "https://namu.wiki/w/NEW%20GAME!(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T11:09:29.892Z"
+    },
+    {
+      "id": "26f0edd3-307d-4a88-a955-6eaf64bdda97",
+      "title": "nEW GAME!!",
+      "image": "nEW GAME!!.webp",
+      "namuWikiUrl": "https://namu.wiki/w/NEW%20GAME!!",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T11:10:14.165Z"
+    },
+    {
+      "id": "74576539-c573-4adb-8137-cda7770f9320",
+      "title": "조난입니까?",
+      "image": "조난입니까.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%A1%B0%EB%82%9C%EC%9E%85%EB%8B%88%EA%B9%8C%3F",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "조난에서 생존하는 불건전한 방법",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T11:11:03.441Z"
+    },
+    {
       "id": "b214dc3d-ef40-4367-b7ba-6c7eca54d65d",
       "title": "이세계 수어사이드 스쿼드",
       "image": "이세계 수어사이드 스쿼드.webp",
@@ -2134,9 +1855,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:11:50.331Z"
     },
@@ -2149,9 +1868,7 @@
       "rating": 4,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:12:36.534Z"
     },
@@ -2164,9 +1881,7 @@
       "rating": 4,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:13:31.494Z"
     },
@@ -2179,9 +1894,7 @@
       "rating": 3.5,
       "review": "참신한 전개, 힘든 작화",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:14:44.267Z"
     },
@@ -2194,9 +1907,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:15:37.256Z"
     },
@@ -2209,9 +1920,7 @@
       "rating": 4,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:16:30.717Z"
     },
@@ -2224,9 +1933,7 @@
       "rating": 4,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:17:25.687Z"
     },
@@ -2239,9 +1946,7 @@
       "rating": 4,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:18:06.996Z"
     },
@@ -2254,9 +1959,7 @@
       "rating": 4,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:19:06.435Z"
     },
@@ -2269,10 +1972,7 @@
       "rating": 4,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션",
-          "영화"
-      ],
+      "types": ["애니메이션", "영화"],
       "status": "completed",
       "createdAt": "2026-10-30T11:20:03.076Z"
     },
@@ -2285,9 +1985,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:20:50.905Z"
     },
@@ -2300,10 +1998,7 @@
       "rating": 4,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션",
-          "영화"
-      ],
+      "types": ["애니메이션", "영화"],
       "status": "completed",
       "createdAt": "2026-10-30T11:22:32.366Z"
     },
@@ -2316,9 +2011,7 @@
       "rating": 4,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:23:21.147Z"
     },
@@ -2331,9 +2024,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "watching",
       "createdAt": "2026-10-30T11:24:27.479Z"
     },
@@ -2346,9 +2037,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:25:15.464Z"
     },
@@ -2361,9 +2050,7 @@
       "rating": 4,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:27:49.202Z"
     },
@@ -2376,26 +2063,22 @@
       "rating": 3,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:28:51.678Z"
     },
     {
-        "id": "55b56efc-7832-4823-b64e-d14a9840a76a",
-        "title": "스파이 패밀리 Season 2",
-        "image": "스파이 패밀리 Season 2.webp",
-        "namuWikiUrl": "https://namu.wiki/w/%EC%8A%A4%ED%8C%8C%EC%9D%B4%20%ED%8C%A8%EB%B0%80%EB%A6%AC(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
-        "watchedAt": "",
-        "rating": 4,
-        "review": "",
-        "longReview": "",
-        "types": [
-            "애니메이션"
-        ],
-        "status": "completed",
-        "createdAt": "2026-10-30T11:29:43.414Z"
+      "id": "55b56efc-7832-4823-b64e-d14a9840a76a",
+      "title": "스파이 패밀리 Season 2",
+      "image": "스파이 패밀리 Season 2.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%8A%A4%ED%8C%8C%EC%9D%B4%20%ED%8C%A8%EB%B0%80%EB%A6%AC(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%202%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T11:29:43.414Z"
     },
     {
       "id": "75c75619-5b91-45a3-8499-ebdc8df29da8",
@@ -2406,9 +2089,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:30:27.762Z"
     },
@@ -2421,9 +2102,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:31:30.921Z"
     },
@@ -2436,9 +2115,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:32:33.090Z"
     },
@@ -2451,9 +2128,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:33:35.335Z"
     },
@@ -2466,10 +2141,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션",
-          "영화"
-      ],
+      "types": ["애니메이션", "영화"],
       "status": "completed",
       "createdAt": "2026-10-30T11:34:47.552Z"
     },
@@ -2482,9 +2154,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:35:47.891Z"
     },
@@ -2497,9 +2167,7 @@
       "rating": 3.5,
       "review": "히나츠루 아이는 전설이다",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:36:50.960Z"
     },
@@ -2512,9 +2180,7 @@
       "rating": 3,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:37:31.940Z"
     },
@@ -2527,13 +2193,11 @@
       "rating": 3,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:38:26.655Z"
     },
-   {
+    {
       "id": "87b088cc-59c6-454f-9884-85c1d3d0391f",
       "title": "우리 메이드가 너무 짜증나!",
       "image": "우리 메이드가 너무 짜증나!.webp",
@@ -2542,9 +2206,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:39:20.040Z"
     },
@@ -2557,26 +2219,22 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:40:16.598Z"
     },
     {
-        "id": "38a739a5-ec5d-4142-b3b8-f968babe36eb",
-        "title": "창단! 짐승의 길",
-        "image": "창단! 짐승의 길.webp",
-        "namuWikiUrl": "https://namu.wiki/w/%EC%B0%BD%EB%8B%A8!%20%EC%A7%90%EC%8A%B9%EC%9D%98%20%EA%B8%B8",
-        "watchedAt": "",
-        "rating": 3.5,
-        "review": "",
-        "longReview": "",
-        "types": [
-            "애니메이션"
-        ],
-        "status": "completed",
-        "createdAt": "2026-10-30T11:41:02.379Z"
+      "id": "38a739a5-ec5d-4142-b3b8-f968babe36eb",
+      "title": "창단! 짐승의 길",
+      "image": "창단! 짐승의 길.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%B0%BD%EB%8B%A8!%20%EC%A7%90%EC%8A%B9%EC%9D%98%20%EA%B8%B8",
+      "watchedAt": "",
+      "rating": 3.5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T11:41:02.379Z"
     },
     {
       "id": "0c11186f-97a2-44c2-b5a2-7151438c263c",
@@ -2587,9 +2245,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:41:51.341Z"
     },
@@ -2602,9 +2258,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:42:40.848Z"
     },
@@ -2617,9 +2271,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:45:47.853Z"
     },
@@ -2632,10 +2284,7 @@
       "rating": 3.5,
       "review": "거품 흥행. 그만큼은 아니다",
       "longReview": "",
-      "types": [
-          "애니메이션",
-          "영화"
-      ],
+      "types": ["애니메이션", "영화"],
       "status": "completed",
       "createdAt": "2026-10-30T11:46:31.600Z"
     },
@@ -2648,9 +2297,7 @@
       "rating": 3.5,
       "review": "유나가 귀여움",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:47:09.559Z"
     },
@@ -2663,9 +2310,7 @@
       "rating": 3,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:48:19.138Z"
     },
@@ -2678,9 +2323,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:49:10.303Z"
     },
@@ -2693,9 +2336,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:49:55.747Z"
     },
@@ -2708,9 +2349,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:50:42.023Z"
     },
@@ -2723,9 +2362,7 @@
       "rating": 4,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:51:39.316Z"
     },
@@ -2738,9 +2375,7 @@
       "rating": 3,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:52:39.438Z"
     },
@@ -2753,10 +2388,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션",
-          "영화"
-      ],
+      "types": ["애니메이션", "영화"],
       "status": "completed",
       "createdAt": "2026-10-30T11:53:21.596Z"
     },
@@ -2769,13 +2401,11 @@
       "rating": 3,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:54:32.442Z"
     },
-   {
+    {
       "id": "b203136c-409a-4549-94ef-0f00a84fbebc",
       "title": "Re:CREATORS",
       "image": "ReCREATORS.webp",
@@ -2784,9 +2414,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:55:27.387Z"
     },
@@ -2799,9 +2427,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:56:26.452Z"
     },
@@ -2814,9 +2440,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:57:16.186Z"
     },
@@ -2829,9 +2453,7 @@
       "rating": 3.5,
       "review": "귀여운 마치를 가스라이팅. 뜻밖의 멘헤라물",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:57:56.484Z"
     },
@@ -2844,26 +2466,22 @@
       "rating": 3,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T11:58:57.880Z"
     },
     {
-        "id": "c96ecd57-5eb9-423f-b888-03f2fe01c07b",
-        "title": "나는 친구가 적다",
-        "image": "나는 친구가 적다.webp",
-        "namuWikiUrl": "https://namu.wiki/w/%EB%82%98%EB%8A%94%20%EC%B9%9C%EA%B5%AC%EA%B0%80%20%EC%A0%81%EB%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-        "watchedAt": "",
-        "rating": 3,
-        "review": "",
-        "longReview": "",
-        "types": [
-            "애니메이션"
-        ],
-        "status": "completed",
-        "createdAt": "2026-10-30T12:00:09.701Z"
+      "id": "c96ecd57-5eb9-423f-b888-03f2fe01c07b",
+      "title": "나는 친구가 적다",
+      "image": "나는 친구가 적다.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%82%98%EB%8A%94%20%EC%B9%9C%EA%B5%AC%EA%B0%80%20%EC%A0%81%EB%8B%A4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 3,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T12:00:09.701Z"
     },
     {
       "id": "95e661cd-ac83-4f81-a253-8db8a85bce7a",
@@ -2874,9 +2492,7 @@
       "rating": 3,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T12:01:05.060Z"
     },
@@ -2889,9 +2505,7 @@
       "rating": 2.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T12:01:57.088Z"
     },
@@ -2904,9 +2518,7 @@
       "rating": 2,
       "review": "좆이 된 날. 초반 전개에 속지 말 것",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T12:02:45.381Z"
     },
@@ -2919,9 +2531,7 @@
       "rating": 2,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T12:03:45.892Z"
     },
@@ -2934,28 +2544,23 @@
       "rating": 2,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T12:04:27.833Z"
     },
     {
-        "id": "b5184032-5c53-4852-b90b-3def10df464f",
-        "title": "극장판 체인소 맨: 레제편",
-        "image": "극장판 체인소 맨 레제편.webp",
-        "namuWikiUrl": "https://namu.wiki/w/%EA%B7%B9%EC%9E%A5%ED%8C%90%20%EC%B2%B4%EC%9D%B8%EC%86%8C%20%EB%A7%A8%3A%20%EB%A0%88%EC%A0%9C%ED%8E%B8",
-        "watchedAt": "",
-        "rating": 5,
-        "review": "코끝을 울리는 애틋한 감정",
-        "longReview": "",
-        "types": [
-            "애니메이션",
-            "영화"
-        ],
-        "lifeWork" : true,
-        "status": "completed",
-        "createdAt": "2026-10-30T12:08:45.726Z"
+      "id": "b5184032-5c53-4852-b90b-3def10df464f",
+      "title": "극장판 체인소 맨: 레제편",
+      "image": "극장판 체인소 맨 레제편.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B7%B9%EC%9E%A5%ED%8C%90%20%EC%B2%B4%EC%9D%B8%EC%86%8C%20%EB%A7%A8%3A%20%EB%A0%88%EC%A0%9C%ED%8E%B8",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "코끝을 울리는 애틋한 감정",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "lifeWork": true,
+      "status": "completed",
+      "createdAt": "2026-10-30T12:08:45.726Z"
     },
     {
       "id": "2c222f83-baab-4113-ba15-2addfe8c6fc4",
@@ -2966,27 +2571,22 @@
       "rating": 4.5,
       "review": "많은 떡밥과 생각하는 재미",
       "longReview": "",
-      "types": [
-          "애니메이션",
-          "영화"
-      ],
+      "types": ["애니메이션", "영화"],
       "status": "completed",
       "createdAt": "2026-10-30T12:11:03.953Z"
     },
     {
-        "id": "35ea672e-efaa-4642-8fbe-0baad8dca0f7",
-        "title": "니세코이",
-        "image": "니세코이.webp",
-        "namuWikiUrl": "https://namu.wiki/w/%EB%8B%88%EC%84%B8%EC%BD%94%EC%9D%B4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
-        "watchedAt": "",
-        "rating": 4,
-        "review": "",
-        "longReview": "",
-        "types": [
-            "애니메이션"
-        ],
-        "status": "completed",
-        "createdAt": "2026-10-30T12:12:07.261Z"
+      "id": "35ea672e-efaa-4642-8fbe-0baad8dca0f7",
+      "title": "니세코이",
+      "image": "니세코이.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%8B%88%EC%84%B8%EC%BD%94%EC%9D%B4(%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%201%EA%B8%B0)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션"],
+      "status": "completed",
+      "createdAt": "2026-10-30T12:12:07.261Z"
     },
     {
       "id": "cbecfc60-4192-404a-addd-96901e6e1fcc",
@@ -2997,10 +2597,7 @@
       "rating": 4.5,
       "review": "잔혹 동화. 어린이 동화의 클리셰를 비틀다",
       "longReview": "",
-      "types": [
-          "애니메이션",
-          "영화"
-      ],
+      "types": ["애니메이션", "영화"],
       "status": "completed",
       "createdAt": "2026-10-30T12:13:15.393Z"
     },
@@ -3013,10 +2610,7 @@
       "rating": 4,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션",
-          "영화"
-      ],
+      "types": ["애니메이션", "영화"],
       "status": "completed",
       "createdAt": "2026-10-30T12:14:04.175Z"
     },
@@ -3029,11 +2623,8 @@
       "rating": 5,
       "review": "애니메이션 예술 작품의 고점",
       "longReview": "",
-      "types": [
-          "애니메이션",
-          "영화"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션", "영화"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T12:15:04.602Z"
     },
@@ -3046,10 +2637,8 @@
       "rating": 5,
       "review": "포식자와 피식자의 공존 가능성",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T12:16:30.719Z"
     },
@@ -3062,9 +2651,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T12:17:01.440Z"
     },
@@ -3077,10 +2664,8 @@
       "rating": 5,
       "review": "함께 달에 가지 못해 미안해",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T12:20:24.072Z"
     },
@@ -3093,9 +2678,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T12:22:48.164Z"
     },
@@ -3108,9 +2691,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T12:23:14.055Z"
     },
@@ -3123,11 +2704,8 @@
       "rating": 5,
       "review": "5,000년 순애, 어떻게 이길래",
       "longReview": "",
-      "types": [
-          "애니메이션",
-          "영화"
-      ],
-      "lifeWork" : true,
+      "types": ["애니메이션", "영화"],
+      "lifeWork": true,
       "status": "completed",
       "createdAt": "2026-10-30T12:25:22.817Z"
     },
@@ -3140,9 +2718,7 @@
       "rating": 5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T12:27:13.566Z"
     },
@@ -3155,9 +2731,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T12:33:03.228Z"
     },
@@ -3170,9 +2744,7 @@
       "rating": 4.5,
       "review": "니아가 귀여움",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "watching",
       "createdAt": "2026-10-30T12:34:36.531Z"
     },
@@ -3185,9 +2757,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "watching",
       "createdAt": "2026-10-30T12:35:41.203Z"
     },
@@ -3200,9 +2770,7 @@
       "rating": 3.5,
       "review": "",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "status": "completed",
       "createdAt": "2026-10-30T12:36:36.075Z"
     },
@@ -3215,14 +2783,558 @@
       "rating": 3.5,
       "review": "뛰어난 작화로 겨우 살려낸 범작",
       "longReview": "",
-      "types": [
-          "애니메이션"
-      ],
+      "types": ["애니메이션"],
       "lifeWork": false,
       "status": "completed",
       "createdAt": "2026-10-30T13:30:14.263Z"
+    },
+    {
+      "id": "da4ebc9f-c40f-4d87-8de4-1a60fc771b6a",
+      "title": "오펜하이머",
+      "image": "오펜하이머.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%ED%8E%9C%ED%95%98%EC%9D%B4%EB%A8%B8(%EC%98%81%ED%99%94)",
+      "watchedAt": "2023-08-15",
+      "rating": 4,
+      "review": "놀란의 뛰어난 연출력",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:25:32.776Z"
+    },
+    {
+      "id": "fccf75af-7658-4007-ac82-0df3b8a246e3",
+      "title": "신차원! 짱구는 못 말려 더 무비 초능력 대결전 ~날아라 수제김밥~",
+      "image": "신차원! 짱구는 못 말려 더 무비 초능력 대결전 ~날아라 수제김밥~.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%8B%A0%EC%B0%A8%EC%9B%90!%20%EC%A7%B1%EA%B5%AC%EB%8A%94%20%EB%AA%BB%EB%A7%90%EB%A0%A4%20%EB%8D%94%20%EB%AC%B4%EB%B9%84:%20%EC%B4%88%EB%8A%A5%EB%A0%A5%20%EB%8C%80%EA%B2%B0%EC%A0%84%20~%EB%82%A0%EC%95%84%EB%9D%BC%20%EC%88%98%EC%A0%9C%EA%B9%80%EB%B0%A5~",
+      "watchedAt": "2024-01-01",
+      "rating": 2,
+      "review": "뻔하고 재미없음",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:29:11.478Z"
+    },
+    {
+      "id": "6ff87eba-a3a5-4f72-8cad-22d0f3b4706d",
+      "title": "서울의 봄",
+      "image": "서울의 봄.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%84%9C%EC%9A%B8%EC%9D%98%20%EB%B4%84(%EC%98%81%ED%99%94)",
+      "watchedAt": "2023-12-17",
+      "rating": 5,
+      "review": "생생하게 담아낸 그날의 이야기",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:31:17.601Z"
+    },
+    {
+      "id": "4c7593b5-30ca-41bd-91d9-f9bfc1b3ffe7",
+      "title": "조커(2019)",
+      "image": "조커(2019).webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%A1%B0%EC%BB%A4(2019)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "인간적인 악당",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:33:26.219Z"
+    },
+    {
+      "id": "2de510f4-8038-4f61-82ff-5dc466396dbd",
+      "title": "조커: 폴리 아 되",
+      "image": "조커 폴리 아 되.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%A1%B0%EC%BB%A4:%20%ED%8F%B4%EB%A6%AC%20%EC%95%84%20%EB%90%98",
+      "watchedAt": "2024-10-11",
+      "rating": 3.5,
+      "review": "용두사미",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:34:57.473Z"
+    },
+    {
+      "id": "1c2999d0-6792-40b7-8759-2473bd5c72f5",
+      "title": "극장총집편 봇치 더 록! 전편",
+      "image": "극장총집편 봇치 더 록! 전편.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B7%B9%EC%9E%A5%EC%B4%9D%EC%A7%91%ED%8E%B8%20%EB%B4%87%EC%B9%98%20%EB%8D%94%20%EB%A1%9D!",
+      "watchedAt": "2024-08-11",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:36:36.122Z"
+    },
+    {
+      "id": "7fdc7102-9a61-40f4-b454-ab8bc8f49412",
+      "title": "인사이드 아웃2",
+      "image": "인사이드 아웃2.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%9D%B8%EC%82%AC%EC%9D%B4%EB%93%9C%20%EC%95%84%EC%9B%83%202",
+      "watchedAt": "2024-07-28",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:37:40.030Z"
+    },
+    {
+      "id": "59cc6f75-b213-401a-ab1e-76fa8934c7c2",
+      "title": "히트맨2",
+      "image": "히트맨2.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%ED%9E%88%ED%8A%B8%EB%A7%A82(%EC%98%81%ED%99%94)",
+      "watchedAt": "2025-02-07",
+      "rating": 1,
+      "review": "한국 영화 수준이라는 게 최고의 개그",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:38:53.523Z"
+    },
+    {
+      "id": "a805f7b6-4631-4fdd-b272-e8b9a40f3a62",
+      "title": "옵세션",
+      "image": "옵세션.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%98%B5%EC%84%B8%EC%85%98(%EC%98%81%ED%99%94)",
+      "watchedAt": "2026-10-10",
+      "rating": 5,
+      "review": "너무 무섭다",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:39:51.724Z"
+    },
+    {
+      "id": "466bc4a0-6df6-4a68-8418-7dd8f780141f",
+      "title": "오디세이",
+      "image": "오디세이.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%EB%94%94%EC%84%B8%EC%9D%B4(%EC%98%81%ED%99%94)",
+      "watchedAt": "2026-08-09",
+      "rating": 5,
+      "review": "신화의 칸트적 접근",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:40:59.069Z"
+    },
+    {
+      "id": "eb5a2758-e012-4d29-a28d-cc2d5c98b17d",
+      "title": "눈동자",
+      "image": "눈동자.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%88%88%EB%8F%99%EC%9E%90(%EC%98%81%ED%99%94)",
+      "watchedAt": "2026-07-10",
+      "rating": 3,
+      "review": "억지 반전을 빼면 남는 허무함",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:42:01.364Z"
+    },
+    {
+      "id": "f98e03be-c702-42d8-b536-1d36a72ecd89",
+      "title": "파묘",
+      "image": "파묘.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%ED%8C%8C%EB%AC%98(%EC%98%81%ED%99%94)",
+      "watchedAt": "",
+      "rating": 4,
+      "review": "재미는 있었던 억지 오컬트",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:44:48.727Z"
+    },
+    {
+      "id": "5a2a5490-7336-4282-9f1e-c1b2826ba8ec",
+      "title": "극한직업",
+      "image": "극한직업.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B7%B9%ED%95%9C%EC%A7%81%EC%97%85(%EC%98%81%ED%99%94)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "보는 내내 웃겼다",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:45:55.681Z"
+    },
+    {
+      "id": "d66dfb4a-f558-4acb-a141-1b55d7180181",
+      "title": "베테랑",
+      "image": "베테랑.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%B2%A0%ED%85%8C%EB%9E%91(%EC%98%81%ED%99%94)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:47:05.477Z"
+    },
+    {
+      "id": "1ad14a70-d718-445f-a99b-3c5be88a8d9f",
+      "title": "신세계",
+      "image": "신세계.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%8B%A0%EC%84%B8%EA%B3%84(%EC%98%81%ED%99%94)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "맛있는 담배, 멋있는 담배",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:47:56.696Z"
+    },
+    {
+      "id": "b2cdba2d-496a-4c3f-bf8b-d630f18d09ac",
+      "title": "범죄와의 전쟁: 나쁜놈들 전성시대",
+      "image": "범죄와의 전쟁 나쁜놈들 전성시대.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%B2%94%EC%A3%84%EC%99%80%EC%9D%98%20%EC%A0%84%EC%9F%81:%20%EB%82%98%EC%81%9C%EB%86%88%EB%93%A4%20%EC%A0%84%EC%84%B1%EC%8B%9C%EB%8C%80",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:49:24.874Z"
+    },
+    {
+      "id": "ca3a658d-69e1-4527-a1a4-3b1a640e84d6",
+      "title": "타짜",
+      "image": "타짜.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%ED%83%80%EC%A7%9C(%EC%98%81%ED%99%94)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:50:08.734Z"
+    },
+    {
+      "id": "f2afce53-b636-4a59-a29b-a04217999e78",
+      "title": "언터처블: 1%의 우정",
+      "image": "언터처블 1%의 우정.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%96%B8%ED%84%B0%EC%B2%98%EB%B8%94:%201%25%EC%9D%98%20%EC%9A%B0%EC%A0%95",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:51:12.194Z"
+    },
+    {
+      "id": "87bc95ec-6e35-4a6d-b014-2bf055e86fbd",
+      "title": "택시운전사",
+      "image": "택시운전사.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%ED%83%9D%EC%8B%9C%EC%9A%B4%EC%A0%84%EC%82%AC",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:51:55.183Z"
+    },
+    {
+      "id": "104b94f0-fe0a-4a37-8f47-35790004ad7b",
+      "title": "신과함께 죄와 벌",
+      "image": "신과함께 죄와 벌.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%8B%A0%EA%B3%BC%ED%95%A8%EA%BB%98-%EC%A3%84%EC%99%80%20%EB%B2%8C",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:53:38.595Z"
+    },
+    {
+      "id": "d20aebb2-5aa2-4545-8b8a-c11d4ee6e979",
+      "title": "어벤져스: 엔드게임",
+      "image": "어벤져스 엔드게임.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%96%B4%EB%B2%A4%EC%A0%B8%EC%8A%A4:%20%EC%97%94%EB%93%9C%EA%B2%8C%EC%9E%84",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:54:39.548Z"
+    },
+    {
+      "id": "a7240f68-30af-43ba-8c86-691a5a8472ac",
+      "title": "신과함께 인과 연",
+      "image": "신과함께 인과 연.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%8B%A0%EA%B3%BC%ED%95%A8%EA%BB%98-%EC%9D%B8%EA%B3%BC%20%EC%97%B0",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:55:31.966Z"
+    },
+    {
+      "id": "dd258f33-037b-4ce7-a2ae-8f20a60e03a7",
+      "title": "어벤져스: 인피니티 워",
+      "image": "어벤져스 인피니티 워.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%96%B4%EB%B2%A4%EC%A0%B8%EC%8A%A4:%20%EC%9D%B8%ED%94%BC%EB%8B%88%ED%8B%B0%20%EC%9B%8C",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:56:29.709Z"
+    },
+    {
+      "id": "781a7155-b847-40a6-a5da-4414a40572b1",
+      "title": "기생충",
+      "image": "기생충.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B8%B0%EC%83%9D%EC%B6%A9(%EC%98%81%ED%99%94)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:57:02.132Z"
+    },
+    {
+      "id": "cc76748e-0a6c-439a-b6d7-53e7d1cd66d6",
+      "title": "연가시",
+      "image": "연가시.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%97%B0%EA%B0%80%EC%8B%9C(%EC%98%81%ED%99%94)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:57:55.323Z"
+    },
+    {
+      "id": "265b02d8-6618-48a4-9765-b9df7e3aa677",
+      "title": "백룸",
+      "image": "백룸.jpg",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%B0%B1%EB%A3%B8(%EC%98%81%ED%99%94)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:59:10.466Z"
+    },
+    {
+      "id": "7fd19cca-f5d3-4e00-8207-6831d46a0eff",
+      "title": "살목지",
+      "image": "살목지.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%82%B4%EB%AA%A9%EC%A7%80(%EC%98%81%ED%99%94)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T13:59:45.972Z"
+    },
+    {
+      "id": "0b977055-bfd5-4748-ab17-0c14689df4ef",
+      "title": "주토피아",
+      "image": "주토피아.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%A3%BC%ED%86%A0%ED%94%BC%EC%95%84",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T14:00:44.427Z"
+    },
+    {
+      "id": "f07c3fc4-6187-420e-aaff-2cab5bf40a79",
+      "title": "주토피아 2",
+      "image": "주토피아 2.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%A3%BC%ED%86%A0%ED%94%BC%EC%95%84%202",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["애니메이션", "영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T14:01:21.013Z"
+    },
+    {
+      "id": "567c8c9b-c70b-442f-b6e0-694a4c958c86",
+      "title": "겨울왕국",
+      "image": "겨울왕국.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EA%B2%A8%EC%9A%B8%EC%99%95%EA%B5%AD",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T14:02:08.961Z"
+    },
+    {
+      "id": "23431c06-b634-4469-bcbb-93911f42775a",
+      "title": "주먹왕 랄프",
+      "image": "주먹왕 랄프.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%A3%BC%EB%A8%B9%EC%99%95%20%EB%9E%84%ED%94%84",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T14:02:38.984Z"
+    },
+    {
+      "id": "45c41bfb-2503-44bd-9930-624265c83805",
+      "title": "완벽한 타인",
+      "image": "완벽한 타인.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%99%84%EB%B2%BD%ED%95%9C%20%ED%83%80%EC%9D%B8",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T14:04:25.710Z"
+    },
+    {
+      "id": "c2ee4a25-661e-4f09-ad2d-ccadc624c5db",
+      "title": "나우 유 씨 미 3",
+      "image": "나우 유 씨 미 3.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%82%98%EC%9A%B0%20%EC%9C%A0%20%EC%94%A8%20%EB%AF%B8%203",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T14:05:22.096Z"
+    },
+    {
+      "id": "3bc819be-205c-4401-a83c-3ad3c4fdfcf2",
+      "title": "레미제라블",
+      "image": "레미제라블.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%A0%88%EB%AF%B8%EC%A0%9C%EB%9D%BC%EB%B8%94(%EC%98%81%ED%99%94)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T14:07:35.379Z"
+    },
+    {
+      "id": "22950298-e290-476c-877b-537fa0395f9a",
+      "title": "박화영",
+      "image": "박화영.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%B0%95%ED%99%94%EC%98%81",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T14:09:37.003Z"
+    },
+    {
+      "id": "c185e6ed-be97-484d-a7f3-d7ef2c6e6cf7",
+      "title": "레이디 두아",
+      "image": "레이디 두아.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%A0%88%EC%9D%B4%EB%94%94%20%EB%91%90%EC%95%84",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["드라마"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T14:12:19.146Z"
+    },
+    {
+      "id": "a47375f8-d386-4d64-a0eb-13bef3684828",
+      "title": "오징어 게임",
+      "image": "오징어 게임.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%EC%A7%95%EC%96%B4%20%EA%B2%8C%EC%9E%84(%EC%8B%9C%EC%A6%8C%201)",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["드라마"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T14:12:49.664Z"
+    },
+    {
+      "id": "81d1d9fb-57ce-4ddd-b67a-c405cf54f880",
+      "title": "오징어 게임 2",
+      "image": "오징어 게임 2.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%98%A4%EC%A7%95%EC%96%B4%20%EA%B2%8C%EC%9E%84(%EC%8B%9C%EC%A6%8C%202)",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["드라마"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-15T14:13:31.379Z"
+    },
+    {
+      "id": "52f6e22b-c4ad-4e18-8c33-da18fc41729c",
+      "title": "늑대와 향신료",
+      "image": "늑대와 향신료.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EB%8A%91%EB%8C%80%EC%99%80%20%ED%96%A5%EC%8B%A0%EB%A3%8C",
+      "watchedAt": "",
+      "rating": 5,
+      "review": "",
+      "longReview": "",
+      "types": ["라이트노벨"],
+      "lifeWork": true,
+      "status": "watching",
+      "createdAt": "2026-11-15T14:15:10.920Z"
     }
-];
+  ];
 
   const works = INITIAL_WORKS.map(normalize);
   const clone = value => JSON.parse(JSON.stringify(value));
@@ -3230,9 +3342,15 @@
   function validateImage(value) {
     const file = String(value || "").trim();
     if (!file) return "";
+
     // 외부 URL, 상대 경로, 폴더 경로는 허용하지 않습니다.
-    if (/[\\/\x00-\x1f]/.test(file) || file === "." || file === ".." ||
-        !/\.(?:jpe?g|png|webp|avif|gif|svg)$/i.test(file) || file.length > 180) {
+    if (
+      /[\\/\x00-\x1f]/.test(file) ||
+      file === "." ||
+      file === ".." ||
+      !/\.(?:jpe?g|png|webp|avif|gif|svg)$/i.test(file) ||
+      file.length > 180
+    ) {
       throw new Error("이미지는 img 폴더 안의 파일명만 입력해 주세요. (jpg, png, webp, avif, gif, svg)");
     }
     return file;
@@ -3242,46 +3360,80 @@
     const date = String(value || "").trim();
     if (!date) return "";
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error("본 날짜를 올바르게 입력해 주세요.");
+
     const parsed = new Date(date + "T12:00:00Z");
-    if (date.slice(0,4) === "0000" || !Number.isFinite(parsed.getTime()) || parsed.toISOString().slice(0,10) !== date)
+    if (
+      date.slice(0, 4) === "0000" ||
+      !Number.isFinite(parsed.getTime()) ||
+      parsed.toISOString().slice(0, 10) !== date
+    ) {
       throw new Error("존재하지 않는 날짜입니다.");
+    }
     return date;
   }
 
   function validateNamuWikiUrl(value) {
     const url = String(value || "").trim();
     if (!url) return "";
+
     try {
       const parsed = new URL(url);
-      if (parsed.protocol === "https:" && parsed.hostname === "namu.wiki" &&
-          !parsed.username && !parsed.password && !parsed.port) return parsed.href;
-    } catch (_) { /* 아래의 안내 메시지로 처리합니다. */ }
+      if (
+        parsed.protocol === "https:" &&
+        parsed.hostname === "namu.wiki" &&
+        !parsed.username &&
+        !parsed.password &&
+        !parsed.port
+      ) {
+        return parsed.href;
+      }
+    } catch {
+      // 아래에서 형식 오류를 안내합니다.
+    }
     throw new Error("나무위키 링크는 https://namu.wiki/로 시작하는 주소를 입력해 주세요.");
   }
 
   function normalize(raw) {
     if (!raw || typeof raw !== "object") throw new Error("올바른 작품 데이터가 아닙니다.");
+
     const title = String(raw.title || "").trim();
     if (!title || title.length > 120) throw new Error("작품 이름을 1~120자로 입력해 주세요.");
+
     const rating = Number(raw.rating);
-    if (!Number.isFinite(rating) || rating < 1 || rating > 5 || !Number.isInteger(rating * 2))
+    if (!Number.isFinite(rating) || rating < 1 || rating > 5 || !Number.isInteger(rating * 2)) {
       throw new Error("별점은 1~5점 사이에서 0.5점 단위로 선택해 주세요.");
+    }
+
     const types = Array.isArray(raw.types) ? [...new Set(raw.types)] : [];
-    if (!types.length || types.some(type => !TYPES.includes(type))) throw new Error("작품 유형을 한 개 이상 선택해 주세요.");
-    if (!["watching", "completed"].includes(raw.status)) throw new Error("감상 상태를 선택해 주세요.");
+    if (!types.length || types.some(type => !TYPES.includes(type))) {
+      throw new Error("작품 유형을 한 개 이상 선택해 주세요.");
+    }
+    if (!["watching", "completed"].includes(raw.status)) {
+      throw new Error("감상 상태를 선택해 주세요.");
+    }
+
     const review = String(raw.review || "").trim().replace(/\s*[\r\n]+\s*/g, " ");
     if (review.length > 180) throw new Error("한 줄 평은 180자까지 입력할 수 있습니다.");
+
     const longReview = String(raw.longReview || "").replace(/\r\n?/g, "\n").trim();
     if (longReview.length > 10000) throw new Error("긴 감상은 10,000자까지 입력할 수 있습니다.");
+
     const createdAt = raw.createdAt || new Date().toISOString();
     if (!Number.isFinite(Date.parse(createdAt))) throw new Error("추가 시각이 올바르지 않습니다.");
+
     return {
       id: String(raw.id || createId()),
-      title, image: validateImage(raw.image),
+      title,
+      image: validateImage(raw.image),
       namuWikiUrl: validateNamuWikiUrl(raw.namuWikiUrl),
-      watchedAt: validateDate(raw.watchedAt), rating, review, longReview, types,
+      watchedAt: validateDate(raw.watchedAt),
+      rating,
+      review,
+      longReview,
+      types,
       lifeWork: raw.lifeWork === true,
-      status: raw.status, createdAt: new Date(createdAt).toISOString()
+      status: raw.status,
+      createdAt: new Date(createdAt).toISOString()
     };
   }
 
@@ -3293,13 +3445,20 @@
 
   window.WorksDB = Object.freeze({
     types: TYPES,
-    getAll() { return clone(works); },
-    getById(id) { const found = works.find(work => work.id === id); return found ? clone(found) : null; },
+    getAll() {
+      return clone(works);
+    },
+    getById(id) {
+      const found = works.find(work => work.id === id);
+      return found ? clone(found) : null;
+    },
     prepare(raw) {
       const existing = raw.id ? works.find(work => work.id === raw.id) : null;
       if (raw.id && !existing) throw new Error("수정할 작품을 찾을 수 없습니다.");
+
       return clone(normalize({
-        ...raw, id: existing ? existing.id : createId(),
+        ...raw,
+        id: existing ? existing.id : createId(),
         createdAt: existing ? existing.createdAt : new Date().toISOString()
       }));
     },
