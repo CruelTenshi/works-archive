@@ -3851,6 +3851,48 @@
       "lifeWork": false,
       "status": "completed",
       "createdAt": "2026-11-16T02:22:57.165Z"
+    },
+    {
+      "id": "eb5bd6f1-1461-4563-a632-8f97fad8b79a",
+      "title": "쿵푸팬더",
+      "image": "쿵푸팬더.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%BF%B5%ED%91%B8%ED%8C%AC%EB%8D%94",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-16T02:27:34.119Z"
+    },
+    {
+      "id": "c5cdc8a7-05b2-4d31-9299-e2e7b01a1f5f",
+      "title": "쿵푸팬더 2",
+      "image": "쿵푸팬더 2.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%BF%B5%ED%91%B8%ED%8C%AC%EB%8D%94%202",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-16T02:27:34.124Z"
+    },
+    {
+      "id": "8e6883e0-28ac-4b52-a084-1196fb9a8ace",
+      "title": "쿵푸팬더 3",
+      "image": "쿵푸팬더 3.webp",
+      "namuWikiUrl": "https://namu.wiki/w/%EC%BF%B5%ED%91%B8%ED%8C%AC%EB%8D%94%203",
+      "watchedAt": "",
+      "rating": 4.5,
+      "review": "",
+      "longReview": "",
+      "types": ["영화"],
+      "lifeWork": false,
+      "status": "completed",
+      "createdAt": "2026-11-16T02:27:34.127Z"
     }
   ];
 
